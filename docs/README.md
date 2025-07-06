@@ -1,51 +1,70 @@
 # CS-Explorer应用更新说明
 
-## 🚀 新增更新日志页面
+## ✨ **功能优化**
 
-本次提交主要实现了**更新日志页面**的功能，并对侧边栏进行了相应的更新以包含该页面的链接，同时优化了主应用布局。这是一个重要的功能增强，旨在为用户提供更便捷的方式来查阅应用的更新信息。
+本次提交主要围绕**新增更新日志页面**展开，并对**侧边栏和主应用布局进行了优化**。现在用户可以通过侧边栏直接访问更新日志，提升了应用的导航体验和信息透明度。
 
-### 变更摘要
-
-*   **🆕 新功能**: 成功添加了一个全新的**更新日志页面**，让用户可以轻松访问应用的最新更新和变更记录。
-*   **✨ 功能优化**: 侧边栏菜单已更新，新增了**“更新日志”**的链接，使用户导航更加直观和方便。
-*   **✨ 功能优化**: 对主应用布局进行了微调，提升了整体的用户体验和界面美观度。
-
-通过这次更新，用户现在可以更方便地了解应用的最新动态，这对于保持用户的知情权和满意度至关重要。
+### 变更分类：
+- `✨ **功能优化**` - 新增更新日志页面，优化侧边栏以包含更新日志链接。
+- `✨ **功能优化**` - 优化主应用布局，提升整体视觉效果和用户体验。
 
 ### 关键代码展示
-
 <details>
 <summary>💡 查看关键代码变更</summary>
 
 \`\`\`diff
-import ReleaseNotesPage from './pages/ReleaseNotes';
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -12,6 +12,7 @@ import FilesPage from './pages/Files';
+ import UploadsPage from './pages/Uploads';
+ import DownloadsPage from './pages/Downloads';
+ import AboutPage from './pages/About';
 +import ReleaseNotesPage from './pages/ReleaseNotes';
-
-function AppContent() {
-  // ... 其他代码 ...
-  <Routes>
-    // ... 其他路由 ...
-    +  <Route path="/releasenotes" element={<ReleaseNotesPage />} />
-  </Routes>
-  // ... 其他代码 ...
-}
-
-import {
-  // ... 其他图标导入 ...
-  + ScrollText
-} from 'lucide-react';
-
-export function Sidebar({ isCollapsed, onToggle }) {
-  // ... 其他侧边栏代码 ...
-  const sidebarLinks = [
-    // ... 其他链接 ...
-    { id: 'releasenotes', href: '/releasenotes', icon: ScrollText, label: '更新日志' },
-  ];
-  // ... 其他侧边栏代码 ...
-}
-
+ 
+ function AppContent() {
+   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+@@ -76,7 +77,7 @@ function AppContent() {
+           onClearNotifications={clearNotifications}
+           onRemoveNotification={removeNotification}
+         />
+-        <main className="flex-1 p-6 overflow-auto">
++        <main className="relative flex-1 overflow-auto p-6">
+           <Routes>
+             <Route path="/" element={<Navigate to="/dashboard" replace />} />
+             <Route path="/dashboard" element={<DashboardPage key={activeProfileId} />} />
+@@ -85,6 +86,7 @@ function AppContent() {
+             <Route path="/downloads" element={<DownloadsPage />} />
+             <Route path="/settings" element={<SettingsPage onSettingsSaved={refreshState} />} />
+             <Route path="/about" element={<AboutPage />} />
++            <Route path="/releasenotes" element={<ReleaseNotesPage />} />
+           </Routes>
+         </main>
+       </LayoutBody>
+--- a/src/components/sidebar.jsx
++++ b/src/components/sidebar.jsx
+@@ -17,7 +17,8 @@ import {
+   Folder,
+   DownloadCloud,
+   Info,
+-  MessageSquare
++  MessageSquare,
++  ScrollText
+ } from 'lucide-react'
+ import { Link, useLocation } from 'react-router-dom'
+ import { useTheme } from "./theme-provider"
+@@ -39,6 +40,7 @@ export function Sidebar({ isCollapsed, onToggle }) {
+     { id: 'downloads', href: '/downloads', icon: DownloadCloud, label: '下载管理' },
+     { id: 'settings', href: '/settings', icon: Settings, label: '设置' },
+     { id: 'about', href: '/about', icon: Info, label: '关于应用' },
++    { id: 'releasenotes', href: '/releasenotes', icon: ScrollText, label: '更新日志' },
+   ]
+ 
+   return (
+--- a/src/pages/ReleaseNotes.jsx
++++ b/src/pages/ReleaseNotes.jsx
+@@ -0,0 +1,17 @@
 +import React from 'react';
-
++
 +const ReleaseNotesPage = () => {
 +  const releaseNotesUrl = "https://jiqingzhe2004.github.io/"; // 您可以在这里替换成您的更新日志网址
 +
@@ -61,7 +80,9 @@ export function Sidebar({ isCollapsed, onToggle }) {
 +};
 +
 +export default ReleaseNotesPage; 
+\ No newline at end of file
 \`\`\`
+
 </details>
 <!-- 57a9b91 at https://github.com/JiQingzhe2004/R2APP/commit/57a9b9191f00267ef459c933b0df1f421e7051a7 -->
 
