@@ -1,5 +1,72 @@
 # CS-Explorer应用更新说明
 
+## 🚀 新增更新日志页面
+
+本次提交主要实现了**更新日志页面**的功能，并对侧边栏进行了相应的更新以包含该页面的链接，同时优化了主应用布局。这是一个重要的功能增强，旨在为用户提供更便捷的方式来查阅应用的更新信息。
+
+### 变更摘要
+
+*   **🆕 新功能**: 成功添加了一个全新的**更新日志页面**，让用户可以轻松访问应用的最新更新和变更记录。
+*   **✨ 功能优化**: 侧边栏菜单已更新，新增了**“更新日志”**的链接，使用户导航更加直观和方便。
+*   **✨ 功能优化**: 对主应用布局进行了微调，提升了整体的用户体验和界面美观度。
+
+通过这次更新，用户现在可以更方便地了解应用的最新动态，这对于保持用户的知情权和满意度至关重要。
+
+### 关键代码展示
+
+<details>
+<summary>💡 查看关键代码变更</summary>
+
+\`\`\`diff
+import ReleaseNotesPage from './pages/ReleaseNotes';
++import ReleaseNotesPage from './pages/ReleaseNotes';
+
+function AppContent() {
+  // ... 其他代码 ...
+  <Routes>
+    // ... 其他路由 ...
+    +  <Route path="/releasenotes" element={<ReleaseNotesPage />} />
+  </Routes>
+  // ... 其他代码 ...
+}
+
+import {
+  // ... 其他图标导入 ...
+  + ScrollText
+} from 'lucide-react';
+
+export function Sidebar({ isCollapsed, onToggle }) {
+  // ... 其他侧边栏代码 ...
+  const sidebarLinks = [
+    // ... 其他链接 ...
+    { id: 'releasenotes', href: '/releasenotes', icon: ScrollText, label: '更新日志' },
+  ];
+  // ... 其他侧边栏代码 ...
+}
+
++import React from 'react';
+
++const ReleaseNotesPage = () => {
++  const releaseNotesUrl = "https://jiqingzhe2004.github.io/"; // 您可以在这里替换成您的更新日志网址
++
++  return (
++    <div className="absolute inset-0">
++      <iframe
++        src={releaseNotesUrl}
++        title="更新日志"
++        className="w-full h-full border-0"
++      />
++    </div>
++  );
++};
++
++export default ReleaseNotesPage; 
+\`\`\`
+</details>
+<!-- 57a9b91 at https://github.com/JiQingzhe2004/R2APP/commit/57a9b9191f00267ef459c933b0df1f421e7051a7 -->
+
+---
+
 ## 📜 添加项目许可证
 
 本次提交为项目添加了必要的许可证文件，确保项目的合法使用和分发。这是一个重要的基础性工作，有助于明确项目的使用条款和版权归属。
