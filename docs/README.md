@@ -1,13 +1,13 @@
 # CS-Explorer应用更新说明
 
-## ✨ **功能优化**
+## 🚀 新增更新日志页面
 
-本次提交主要聚焦于提升应用的导航体验和整体布局优化。我们新增了一个**更新日志页面**，让用户可以轻松访问应用的最新动态和版本信息。同时，我们对侧边栏进行了更新，添加了指向**更新日志**的链接，使用户能够更直观地找到所需信息。
+本次提交主要实现了更新日志页面的功能，并优化了侧边栏以包含更新日志链接，同时对主应用布局进行了微调。
 
-### 变更分类:
-- `✨ **功能优化**`
+*   **🆕 新功能**: 新增了名为 `ReleaseNotesPage` 的页面组件，用于展示应用的更新日志。该页面通过iframe加载外部更新日志资源，方便用户查阅最新信息。
+*   **✨ 功能优化**: 侧边栏菜单中新增了“更新日志”的链接项，并使用了 `ScrollText` 图标进行标识，用户可以点击该链接直接跳转到更新日志页面。同时，对主应用布局的类名进行了调整，增加了 `relative` 类，以更好地支持新页面的展示需求。
 
-### 关键代码展示:
+### 关键代码展示
 
 ```diff
 --- a/src/App.jsx
@@ -82,27 +82,53 @@
 
 ---
 
-## 📜 添加项目许可证
+## 📜 添加许可证
 
-在本次提交中，我们为项目添加了必要的许可证文件（`LICENSE`），明确了项目的法律使用条款。这一举措不仅规范了项目的开源行为，也为使用者提供了清晰的权利和责任界定，是项目合规和透明化的重要一步。
+本次提交的核心内容是向项目中添加了**LICENSE文件**，明确了项目的开源许可证类型为**MIT License**。这一举措有助于保护项目的知识产权，并为使用者提供清晰的授权说明，确保项目的合规性和透明度。
 
-`🆕 **新功能**`
+此变更属于：
+`🆕 新功能`
 
-许可证是开源项目不可或缺的一部分，它保护了项目的知识产权，同时也为使用者提供了明确的使用指导。通过添加许可证，我们确保了项目的合法性和透明度，为项目的长期发展和社区贡献奠定了坚实的基础。
+由于添加的是许可证文件，其内容对于最终用户理解和使用项目至关重要，因此我们将直接展示关键代码部分：
 
-由于添加的许可证内容较为标准，且主要涉及文本文件的创建，因此不包含核心逻辑的变更，故不展示关键代码。
+```diff
+--- a/LICENSE
++++ b/LICENSE
+@@ -0,0 +1,21 @@
++MIT License
++
++Copyright (c) 2025 Forrest
++
++Permission is hereby granted, free of charge, to any person obtaining a copy
++of this software and associated documentation files (the "Software"), to deal
++in the Software without restriction, including without limitation the rights
++to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++copies of the Software, and to permit persons to whom the Software is
++furnished to do so, subject to the following conditions:
++
++The above copyright notice and this permission notice shall be included in all
++copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++SOFTWARE.
+```
 <!-- 070eaa3 at https://github.com/JiQingzhe2004/R2APP/commit/070eaa3de84fa03b7245cb6f7707a1ff8d26d24c -->
 
 ---
 
 ## ✨ 功能优化
 
-本次提交主要针对应用版本管理和用户界面进行了优化，提升了应用的透明度和用户体验。我们更新了 `.gitignore` 文件以排除日志和构建输出文件，优化了项目整洁度。同时，在 `package.json` 中修改了构建脚本以注入版本信息，并新增了 `inject-version.cjs` 脚本用于生成版本文件。最后，在 About 页面中显示了应用版本信息，并优化了用户界面，使用户能够更直观地了解应用版本和相关信息。
+本次提交专注于提升应用的版本管理和用户界面体验。我们更新了 `.gitignore` 文件以排除不必要的日志和构建输出，优化了 `package.json` 中的构建脚本以注入版本信息，并新增了 `inject-version.cjs` 脚本用于生成版本文件。此外，我们在应用的自定义页面中展示了应用版本信息，并对其用户界面进行了优化，以提供更清晰、更直观的用户体验。
 
-### 分类和图标
-- `✨ **功能优化**`
+### 变更分类:
+- `✨ 功能优化`
 
-### 关键代码展示
+### 关键代码展示:
 
 ```diff
 --- a/.gitignore
@@ -127,6 +153,8 @@
 +
 +# temp file
 +src/version.json
+\ No newline at end of file
+
 --- a/package.json
 +++ b/package.json
 @@ -7,10 +7,11 @@
@@ -164,7 +192,9 @@
 +// Write the version data to the file.
 +fs.writeFileSync(outputPath, JSON.stringify(versionData, null, 2));
 +
-+console.log(`Version ${version} injected into ${outputPath}`);
++console.log(`Version ${version} injected into ${outputPath}`); 
+\ No newline at end of file
+
 --- a/src/pages/About.jsx
 +++ b/src/pages/About.jsx
 @@ -4,8 +4,11 @@ import WhiteLogo from '@/assets/WhiteLOGO.png'
@@ -217,7 +247,8 @@
 +      </div>
      </div>
    )
- }
+ } 
+\ No newline at end of file
 ```
 <!-- 100329b at https://github.com/JiQingzhe2004/R2APP/commit/100329be787efa753a624b7c6ecb241f6d5c1e8b -->
 
@@ -225,18 +256,15 @@
 
 ## 🚀 v3.0.0
 
-本次更新带来了令人兴奋的新功能和用户体验优化！我们不仅将版本号更新至 `v3.0.0`，还在文件预览组件中新增了复制代码到剪贴板的功能，极大地提升了用户在查看代码时的便捷性。同时，我们还引入了 `Copy` 图标，以增强界面的交互性和视觉吸引力。以下是本次更新的详细内容：
+本次更新带来了令人兴奋的新功能和用户体验优化！我们专注于提升用户在文件预览组件中的操作便捷性，并引入了直观的视觉元素，使整个应用更加现代化和高效。
 
-### 🆕 **新功能**
+### 变更摘要
 
-- **复制代码到剪贴板功能**：用户现在可以轻松地将文件内容复制到剪贴板，这对于需要分享代码片段或进行快速参考的用户来说，无疑是一个巨大的便利。
-- **引入 `Copy` 图标**：我们添加了 `Copy` 图标，使其在文件预览组件中更加直观地指示复制功能，提升了界面的交互性和用户友好性。
+*   **🆕 新功能**: 在文件预览组件中新增了“复制代码到剪贴板”功能，让用户能够轻松地复制文件内容，极大地提升了工作效率。
+*   **✨ 功能优化**: 引入了Copy图标，不仅增强了界面的交互性，还让用户能够更直观地识别可复制操作的位置，提升了整体的用户体验。
+*   **版本更新**: 应用版本已正式更新至 `v3.0.0`，标志着新功能的正式发布。
 
-### ✨ **功能优化**
-
-- **用户体验优化**：通过新增复制代码到剪贴板的功能，我们优化了用户在查看代码时的体验，使其更加高效和便捷。
-
-以下是本次更新的关键代码展示：
+### 关键代码展示
 
 ```diff
 --- a/src/components/FilePreview.jsx
@@ -292,15 +320,20 @@
 
 ---
 
-## 🚀 新增文件预览功能
+## 🚀 新功能：文件预览功能
 
-本次提交为我们带来了令人兴奋的**新功能**——文件预览功能！现在，用户可以轻松预览代码和图片文件，极大地提升了用户体验。我们还在文件页面中集成了文件预览组件，使得操作更加便捷。
+本次提交为应用程序新增了强大的文件预览功能，极大地提升了用户体验。现在用户可以直接在文件页面中预览代码和图片文件，无需跳转到其他编辑器或预览工具。为了实现这一功能，我们集成了新的文件预览组件，并优化了相关交互流程。
 
 ### 变更摘要
 
-*   **🆕 新功能**: 我们引入了全新的文件预览功能，支持代码和图片文件的预览，让用户无需离开应用就能查看文件内容。
-*   **🆕 新功能**: 在文件页面中集成了文件预览组件，优化了用户操作流程，提升了整体体验。
-*   **✨ 功能优化**: 更新了依赖项，添加了`react-syntax-highlighter`库，以支持代码高亮显示，使代码预览更加美观和易读。
+`🆕 新功能`
+
+我们引入了全新的文件预览功能，允许用户直接在应用内查看代码和图片文件。这一功能通过以下方式实现：
+
+- 添加了文件内容获取接口 `get-object-content`，用于从存储服务（如R2和OSS）中获取文件内容。
+- 在 `electron/preload/index.mjs` 中暴露了新的预览接口 `getObjectContent`，供前端调用。
+- 新增了文件大小限制（1MB），超过此大小的文件将无法预览，以避免性能问题。
+- 为了支持代码高亮显示，我们引入了 `react-syntax-highlighter` 依赖项，确保代码预览的易读性。
 
 ### 关键代码展示
 
@@ -376,107 +409,121 @@
          "sonner": "^2.0.6",
          "uuid": "^11.1.0"
        },
-@@ -1224,6 +1225,15 @@
-         "@babel/core": "^7.0.0-0"
-       }
-     },
-+    "node_modules/@babel/runtime": {
-+      "version": "7.27.6",
-+      "resolved": "https://registry.npmmirror.com/@babel/runtime/-/runtime-7.27.6.tgz",
-+      "integrity": "sha512-vbavdySgbTTrmFE+EsiqUTzlOr5bzlnJtUv9PynGCAKvfQqjIXbvFdumPM/GxMDfyuGMJaJAU6TO4zc1Jf1i8Q==",
-+      "license": "MIT",
-+      "engines": {
-+        "node": ">=6.9.0"
-+      }
-+    },
-     "node_modules/@babel/template": {
-       "version": "7.27.2",
-       "resolved": "https://registry.npmmirror.com/@babel/template/-/template-7.27.2.tgz",
-@@ -4800,6 +4810,15 @@
-         "@types/node": "*"
-       }
-     },
-+    "node_modules/@types/hast": {
-+      "version": "2.3.10",
-+      "resolved": "https://registry.npmmirror.com/@types/hast/-/hast-2.3.10.tgz",
-+      "integrity": "sha512-McWspRw8xx8J9HurkVBfYj0xKoE25tOFlHGdx4MJ5xORQrMGZNqJhVQWaIbm6Oyla5kYOXtDiopzKRJzEOkwJw==",
-+      "license": "MIT",
-+      "dependencies": {
-+        "@types/unist": "^2"
-+      }
-+    },
-     "node_modules/@types/http-cache-semantics": {
-       "version": "4.0.4",
-       "resolved": "https://registry.npmmirror.com/@types/http-cache-semantics/-/http-cache-semantics-4.0.4.tgz",
-@@ -4874,6 +4893,12 @@
-         "@types/node": "*"
-       }
-     },
-+    "node_modules/@types/unist": {
-+      "version": "2.0.11",
-+      "resolved": "https://registry.npmmirror.com/@types/unist/-/unist-2.0.11.tgz",
-+      "integrity": "sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaASTU1sMpsBOzgbYhnsA==",
-+      "license": "MIT"
-+    },
-     "node_modules/@types/uuid": {
-       "version": "9.0.8",
-       "resolved": "https://registry.npmmirror.com/@types/uuid/-/uuid-9.0.8.tgz",
-@@ -5857,6 +5882,36 @@
-         "url": "https://github.com/chalk/chalk?sponsor=1"
-       }
-     },
-+    "node_modules/character-entities": {
-+      "version": "1.2.4",
-+      "resolved": "https://registry.npmmirror.com/character-entities/-/character-entities-1.2.4.tgz",
-+      "integrity": "sha512-iBMyeEHxfVnIakwOuDXpVkc54HijNgCyQB2w0VfGQThle6NXn50U6V/u+LDhxHcDUPojn6Kpga3PTAD8W1bQw==",
-+      "license": "MIT",
-+      "funding": {
-+        "type": "github",
-+        "url": "https://github.com/sponsors/wooorm"
-+      }
-+    },
-+    "node_modules/character-entities-legacy": {
-+      "version": "1.1.4",
-+      "resolved": "https://registry.npmmirror.com/character-entities-legacy/-/character-entities-legacy-1.1.4.tgz",
-+      "integrity": "sha512-3Xnr+7ZFS1uxeiUDvV02wQ+QDbc55o97tIV5zHScSPJpcLm/r0DFPcoY3tYRp+VZukxuMeKgXYmsXQHO05zQeA==",
-+      "license": "MIT",
-+      "funding": {
-+        "type": "github",
-+        "url": "https://github.com/sponsors/wooorm"
-+      }
-+    },
-+    "node_modules/character-reference-invalid": {
-+      "version": "1.1.4",
-+      "resolved": "https://registry.npmmirror.com/character-reference-invalid/-/character-reference-invalid-1.1.4.tgz",
-+      "integrity": "sha512-mKKUkUbhPpQlCOfIuZkvSEgktjPFIsZKRRbC6KWVEMvlzblj3i3asQv5ODsrwt0N3pHAEvjP8KTQPHkp0+6jOg==",
-+      "license": "MIT",
-+      "funding": {
-+        "type": "github",
-+        "url": "https://github.com/sponsors/wooorm"
-+      }
-+    },
 ```
-
-通过这些关键代码的变更，我们成功实现了文件预览功能，并优化了用户体验。用户现在可以更方便地预览代码和图片文件，享受更流畅的操作体验。
 <!-- 71f832c at https://github.com/JiQingzhe2004/R2APP/commit/71f832c295634a85e78416bb7113b82450071990 -->
 
 ---
 
-## 🚀 新增文件夹管理功能
-
-本次提交带来了对文件系统管理的重大升级，不仅支持了文件夹的创建与删除，还对文件列表显示和上传逻辑进行了深度优化。这些改进将极大地提升用户在管理大量文件时的效率和体验。
+## 🚀 新功能：文件夹管理功能
 
 ### 变更摘要
 
-*   **🆕 新功能**: 引入了完整的文件夹管理功能，包括创建 (`create-folder`)、删除 (`delete-folder`) 文件夹的能力。
-*   **✨ 功能优化**: 优化了文件列表显示，现在能够清晰地区分文件夹和文件，使用户更容易浏览和管理。
-*   **✨ 功能优化**: 更新了文件上传逻辑，支持用户选择特定的文件夹作为上传目标，简化了批量上传的流程。
-*   **✨ 功能优化**: 调整了文件删除逻辑，现在支持对文件夹的删除操作，同时确保了删除操作的完整性和安全性。
-*   **✨ 功能优化**: 更新了依赖项，引入了 `@radix-ui/react-separator` 组件，以增强UI的分隔效果和整体美观度。
+本次提交带来了**文件夹管理功能**的全面升级，让文件操作更加高效和直观。我们引入了创建和删除文件夹的能力，让用户可以更好地组织和管理他们的文件。同时，我们对文件列表显示进行了优化，现在能够清晰地区分文件夹和文件，提升用户体验。
+
+此外，我们还更新了文件上传逻辑，支持用户选择文件夹进行上传，简化了上传流程。文件删除逻辑也得到了调整，现在支持删除文件夹及其内容。最后，我们更新了依赖项，添加了 `@radix-ui/react-separator` 组件，以增强UI效果，使界面更加现代化和美观。
+
+这些改进不仅增强了应用的**功能性**，还提升了**易用性**和**视觉效果**，为用户提供了更加完善的文件管理体验。
+
+**分类**: `🆕 新功能`
 
 ### 关键代码展示
 
 ```diff
+--- a/electron/main/index.js
++++ b/electron/main/index.js
+@@ -318,38 +318,64 @@ ipcMain.handle('get-bucket-stats', async () => {
+   }
+ });
+ 
+-ipcMain.handle('list-objects', async (_, { continuationToken, prefix }) => {
++ipcMain.handle('list-objects', async (_, { continuationToken, prefix, delimiter }) => {
+   const storage = await getStorageClient();
+   if (!storage) {
+-    return { success: false, error: '请先在设置中配置您的存储桶。' };
++    return { success: false, error: '未找到活动的存储配置' };
+   }
+ 
+   try {
+     let files = [];
+-    let nextContinuationToken;
++    let folders = [];
++    let nextContinuationToken = null;
+ 
+     if (storage.type === 'r2') {
+-      const command = new ListObjectsV2Command({ Bucket: storage.bucket, ContinuationToken: continuationToken, Prefix: prefix, MaxKeys: 30 });
++      const command = new ListObjectsV2Command({
++        Bucket: storage.bucket,
++        ContinuationToken: continuationToken,
++        Prefix: prefix,
++        Delimiter: delimiter,
++        MaxKeys: 50,
++      });
+       const response = await storage.client.send(command);
+       files = (response.Contents || []).map(f => ({
+-          key: f.Key,
+-          lastModified: f.LastModified,
+-          size: f.Size,
+-          etag: f.ETag
++        key: f.Key,
++        lastModified: f.LastModified,
++        size: f.Size,
++        etag: f.ETag
++      }));
++      folders = (response.CommonPrefixes || []).map(p => ({
++        key: p.Prefix,
++        type: 'folder'
+       }));
+       nextContinuationToken = response.NextContinuationToken;
+     } else if (storage.type === 'oss') {
+-      const response = await storage.client.list({ marker: continuationToken, prefix: prefix, 'max-keys': 30 });
++      const response = await storage.client.list({
++        marker: continuationToken,
++        prefix: prefix,
++        delimiter: delimiter,
++        'max-keys': 50
++      });
+       files = (response.objects || []).map(f => ({
+-          key: f.name,
+-          lastModified: f.lastModified,
+-          size: f.size,
+-          etag: f.etag
++        key: f.name,
++        lastModified: f.lastModified,
++        size: f.size,
++        etag: f.etag
++      }));
++      folders = (response.prefixes || []).map(p => ({
++        key: p,
++        type: 'folder'
+       }));
+       nextContinuationToken = response.nextMarker;
+     }
+     
+-    return { success: true, data: { files, nextContinuationToken } };
++    // Combine folders and files, with folders first
++    const combined = [
++      ...folders.map(f => ({ ...f, isFolder: true })),
++      ...files.map(f => ({ ...f, isFolder: false }))
++    ].filter(item => item.key !== prefix); // Don't show the current folder itself
++
++    return { success: true, data: { files: combined, nextContinuationToken } };
+   } catch (error) {
+     return { success: false, error: `获取文件列表失败: ${error.message}` };
+   }
+@@ -368,14 +394,112 @@ ipcMain.handle('delete-object', async (_, key) => {
+     } else if (storage.type === 'oss') {
+       await storage.client.delete(key);
+     }
+-    addRecentActivity('delete', `删除了 ${key}`);
++    addRecentActivity('delete', `删除了 ${key}`, 'success');
+     return { success: true };
+   } catch (error) {
+     console.error(`Failed to delete object ${key}:`, error);
++    addRecentActivity('delete', `删除对象 ${key} 失败`, 'error');
++    return { success: false, error: error.message };
++  }
++});
++
 +ipcMain.handle('delete-folder', async (event, prefix) => {
 +  const storage = await getStorageClient();
 +  if (!storage) {
@@ -535,10 +582,10 @@
 +  } catch (error) {
 +    console.error(`Failed to delete folder ${prefix}:`, error);
 +    addRecentActivity('delete', `删除文件夹 "${prefix}" 失败`, 'error');
-+    return { success: false, error: error.message };
-+  }
-+});
-+
+     return { success: false, error: error.message };
+   }
+ });
+ 
 +ipcMain.handle('create-folder', async (event, folderName) => {
 +  const storage = await getStorageClient();
 +  if (!storage) {
@@ -569,6 +616,24 @@
 +    return { success: false, error: error.message };
 +  }
 +});
++
++ipcMain.handle('get-downloads', (event) => {
++  return store.get('downloads', []);
++});
++
+ ipcMain.handle('show-open-dialog', async () => {
+   if (!mainWindow) return;
+   const result = await dialog.showOpenDialog(mainWindow, {
+--- a/electron/preload/index.mjs
++++ b/electron/preload/index.mjs
+@@ -12,6 +12,8 @@ const api = {
+   getRecentActivities: () => ipcRenderer.invoke('get-recent-activities'),
+   listObjects: (options) => ipcRenderer.invoke('list-objects', options),
+   deleteObject: (key) => ipcRenderer.invoke('delete-object', key),
++  deleteFolder: (prefix) => ipcRenderer.invoke('delete-folder', prefix),
++  createFolder: (folderName) => ipcRenderer.invoke('create-folder', folderName),
+   uploadFile: (filePath, key) => ipcRenderer.invoke('upload-file', { filePath, key }),
+   showOpenDialog: () =>
 ```
 <!-- ccb3eac at https://github.com/JiQingzhe2004/R2APP/commit/ccb3eac0c6a69e41794be4ea9f59056bc31051f5 -->
 
@@ -576,18 +641,21 @@
 
 ## 🚀 v2.0.1
 
-本次更新带来了令人兴奋的新功能和改进，旨在提升用户体验和应用的实用性。以下是本次版本的主要变更：
+本次更新为CS-Explorer带来了令人兴奋的新功能与改进！我们不仅升级了版本，还引入了**最近活动记录**功能，让用户能够轻松追踪上传、下载和删除操作。同时，我们对仪表盘进行了优化，现在可以直观地显示存储使用情况和最近活动，让用户对数据有更清晰的掌控。此外，我们还更新了设置页面，支持存储配额配置，进一步提升了用户体验。
 
-`🆕 **新功能**`
-- **新增最近活动记录功能**：现在，应用能够记录并展示用户的上传、下载和删除操作，让用户随时了解最近的文件活动。
-- **仪表盘优化**：仪表盘现在会显示存储使用情况和最近活动，帮助用户更好地管理他们的文件和存储空间。
-- **设置页面更新**：新增了对存储配额配置的支持，用户现在可以在设置页面中配置存储配额，进一步提升用户体验。
+### ✨ 功能优化
+- **仪表盘优化**: 仪表盘现在能够显示存储使用情况和最近活动，让用户实时了解数据状态。
+- **设置页面更新**: 新增存储配额配置选项，用户可以根据需求灵活调整存储空间。
 
-`✨ **功能优化**`
-- **存储桶统计信息优化**：优化了获取存储桶统计信息的逻辑，现在会显示存储桶名称和存储配额，提供更详细的存储使用情况。
-- **窗口状态管理优化**：增加了对窗口最大化状态变化的监听和处理，确保应用在窗口状态变化时能够正确更新状态。
+### 🆕 新功能
+- **最近活动记录**: 新增功能，支持记录上传、下载和删除操作，方便用户追踪文件活动。
+- **存储配额配置**: 设置页面新增存储配额配置，提升用户体验。
 
-以下是本次更新中最关键的代码变更：
+### 🐞 Bug修复
+- **存储桶统计信息获取**: 修复了获取存储桶统计信息时的一些问题，确保数据准确性。
+- **文件删除功能**: 优化了文件删除功能，现在会在删除后记录活动，并处理潜在的错误。
+
+### 关键代码展示
 
 ```diff
 --- a/electron/main/index.js
@@ -769,16 +837,23 @@
 
 ## 🚀 v2.0.1
 
-本次更新带来了多项改进，旨在提升用户体验和应用稳定性。以下是本次版本的主要变更：
+本次更新带来了多项改进，旨在提升用户体验和应用的整体质量。以下是本次版本的主要变更：
 
-- **🆕 新功能**: 优化了头部组件的配置选择功能，新增了单选框，以提供更直观、便捷的用户选择体验。
-- **✨ 功能优化**: 调整了文件页面的文件名显示方式，增加了截断效果，确保长文件名不会遮挡界面布局。同时，更新了关于页面的GitHub链接，指向最新的项目仓库。
+### ✨ 功能优化
+- **头部组件配置选择功能优化**: 为了提供更直观的选择体验，我们引入了单选框来替代原有的下拉菜单项。这一改变使得用户在切换配置时能够更清晰地看到当前选中的选项，从而提升操作的便捷性和准确性。
+
+### 🐞 Bug修复
+- **文件名显示方式调整**: 在文件页面，我们对文件名的显示方式进行了调整，增加了截断效果。当文件名过长时，会自动进行截断并显示省略号，同时提供完整文件名的工具提示。这一改进确保了界面整洁，同时不会因过长的文件名而影响布局。
+
+### 其他
+- **关于页面GitHub链接更新**: 更新了关于页面中的GitHub链接，指向了最新的仓库地址。
 
 ### 关键代码展示
 
 ```diff
-diff --git a/src/components/header.jsx b/src/components/header.jsx
-index 10,7+10,9 @@ import {
+--- a/src/components/header.jsx
++++ b/src/components/header.jsx
+@@ -10,7 +10,9 @@ import {
    DropdownMenuItem,
    DropdownMenuTrigger,
    DropdownMenuSeparator,
@@ -789,7 +864,7 @@ index 10,7+10,9 @@ import {
  } from "@/components/ui/dropdown-menu"
  import { 
    Tooltip,
-@@ -135,11+137,15 @@ export function Header({
+@@ -135,11 +137,15 @@ export function Header({
                </Button>
              </DropdownMenuTrigger>
              <DropdownMenuContent className="w-[180px]">
@@ -810,18 +885,9 @@ index 10,7+10,9 @@ import {
              </DropdownMenuContent>
            </DropdownMenu>
          )}
-diff --git a/src/components/ui/dropdown-menu.jsx b/src/components/ui/dropdown-menu.jsx
-index 103,7+103,7 @@ const DropdownMenuRadioItem = React.forwardRef(({ className, children, ...props
-     {...props}>
-     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
-       <DropdownMenuPrimitive.ItemIndicator>
--        <Circle className="h-2 w-2 fill-current" />
-+        <Check className="h-4 w-4" />
-       </DropdownMenuPrimitive.ItemIndicator>
-     </span>
-     {children}
-diff --git a/src/pages/Files.jsx b/src/pages/Files.jsx
-index 247,9+247,11 @@ export default function FilesPage({ isSearchOpen, onSearchOpenChange }) {
+--- a/src/pages/Files.jsx
++++ b/src/pages/Files.jsx
+@@ -247,9 +247,11 @@ export default function FilesPage({ isSearchOpen, onSearchOpenChange }) {
                      return (
                          <TableRow key={key} ref={isLastElement ? lastFileElementRef : null}>
                              <TableCell>{getFileIcon(file)}</TableCell>
@@ -840,14 +906,14 @@ index 247,9+247,11 @@ export default function FilesPage({ isSearchOpen, onSearch
 
 ---
 
-## ✨ 更新应用名称和版本
+## ✨ 功能优化
 
-### 变更摘要
-本次提交对应用进行了全面的更新，旨在提升用户体验和品牌形象。我们不仅**替换了应用名称和版本号**，还**优化了应用描述**，使其更准确地反映应用的新功能和目标用户。此外，我们还**更换了应用图标和LOGO**，以提升视觉吸引力，使应用在众多云存储管理工具中脱颖而出。
+本次提交主要对应用进行了**版本迭代和视觉升级**，旨在提升用户体验和应用的市场竞争力。我们不仅更新了应用的核心信息，还优化了视觉元素，让应用更具吸引力。
 
-这些变更属于 `✨ **功能优化**` 类别，旨在为用户提供更清晰、更现代化的应用体验。
+- `🆕 新功能`: 应用名称从 `r2-explorer` 更改为 `CS-Explorer`，版本号从 `1.0.0` 升级至 `2.0.0`，以反映新增的功能和改进。
+- `✨ 功能优化`: 应用描述也进行了相应的更新，从专注于管理Cloudflare R2存储，扩展为更广泛的在线云存储管理，体现了应用的扩展性和通用性。
+- `✨ 功能优化`: 应用图标和LOGO也进行了替换，以提升视觉效果，使应用在视觉上更具吸引力。
 
-### 关键代码展示
 ```
 \`\`\`diff
 --- a/package.json
@@ -869,15 +935,13 @@ index 247,9+247,11 @@ export default function FilesPage({ isSearchOpen, onSearch
 
 ---
 
-## 🚀 添加阿里云OSS支持
+## 🚀 新功能：添加阿里云OSS支持
 
-### 变更摘要
+本次提交为应用程序引入了对阿里云OSS（对象存储服务）的全面支持。这不仅扩展了存储解决方案的多样性，还为用户提供了更多灵活的数据管理选项。以下是本次变更的主要内容：
 
-本次提交为应用程序引入了对阿里云OSS（对象存储服务）的全面支持，同时进行了关键的配置和逻辑重构，以适应多种存储类型的文件操作。这次更新不仅扩展了应用的存储能力，还优化了用户在设置页面中添加和管理OSS配置的体验。
-
-- **🆕 新功能**: 引入阿里云OSS支持，允许用户通过OSS进行文件存储和检索。
-- **✨ 功能优化**: 重构了文件处理逻辑，使其能够支持不同的存储类型（包括本地、R2和OSS），提升了应用的灵活性和可扩展性。
-- **✨ 功能优化**: 优化了设置页面，增加了对OSS配置的添加和管理功能，改善了用户在配置存储服务时的体验。
+*   **引入ali-oss依赖**: 在`electron.vite.config.js`中增加了`ali-oss`作为项目依赖，为OSS功能提供必要的库支持。
+*   **重构文件处理逻辑**: 对`electron/main/index.js`中的文件处理逻辑进行了重构，使其能够支持不同存储类型（如OSS和本地存储）的文件操作，增强了系统的可扩展性和通用性。
+*   **优化设置页面**: 对设置页面进行了优化，以支持OSS配置的添加和管理。现在用户可以直接在应用内添加、编辑和切换不同的OSS存储桶配置，大大提升了用户体验和操作的便捷性。
 
 ### 关键代码展示
 
@@ -1122,38 +1186,33 @@ index 247,9+247,11 @@ export default function FilesPage({ isSearchOpen, onSearch
 
 ---
 
-## 🚀 整合通知功能
+## 🚀 新功能：整合通知功能
 
-本次提交全面整合了通知系统，为应用内消息管理引入了全新的上下文。通过在头部组件中嵌入通知显示与清除功能，并在文件、下载、上传及设置页面中集成反馈机制，我们显著提升了用户操作的即时性和便捷性。
+本次提交的核心变更在于**整合了通知功能**，为应用内通知的管理提供了全新的上下文。我们不仅**更新了头部组件**以展示通知并支持清除功能，还在文件、下载、上传和设置页面中**集成了通知反馈**，从而显著提升了用户体验。
 
-### 🆕 **新功能**
+### 🆕 新功能
+- 引入了 `NotificationProvider` 和 `useNotifications` 钩子，为整个应用提供了通知管理的能力。
+- 头部组件现在支持显示通知列表，并允许用户标记所有通知为已读或清除所有通知。
+- 在多个关键页面（文件、下载、上传、设置）中集成了通知反馈，确保用户能够及时收到重要信息。
 
-*   **引入通知上下文**: 新增了 `NotificationProvider` 和相关钩子 `useNotifications`，为整个应用构建了统一的通知管理框架。
-*   **头部组件增强**:  `Header` 组件现已支持显示未读通知计数、通知列表、批量标记已读、清除所有通知及移除单个通知功能。
-*   **页面集成反馈**: 在文件、下载、上传和设置页面中，关键操作（如切换配置文件）现在会触发通知提示，使用户体验更加流畅。
-
-#### 关键代码展示
+### 关键代码展示
 
 ```diff
---- a/src/App.jsx
-+++ b/src/App.jsx
-@@ -1,23 +1,25 @@
- import { useState, useEffect, useCallback } from 'react';
- import { ThemeProvider } from "@/components/theme-provider"
--import { Toaster } from 'sonner';
+import { useState, useEffect, useCallback } from 'react';
+import { ThemeProvider } from "@/components/theme-provider"
 +import { Toaster, toast } from 'sonner';
- import { Layout, LayoutBody } from '@/components/ui/layout'
- import { Sidebar } from '@/components/sidebar'
- import { Header } from '@/components/header'
- import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Layout, LayoutBody } from '@/components/ui/layout'
+import { Sidebar } from '@/components/sidebar'
+import { Header } from '@/components/header'
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 +import { NotificationProvider, useNotifications } from './contexts/NotificationContext';
- import DashboardPage from './pages/Dashboard';
- import SettingsPage from './pages/Settings';
- import FilesPage from './pages/Files';
- import UploadsPage from './pages/Uploads';
- import DownloadsPage from './pages/Downloads';
- import AboutPage from './pages/About';
- 
+import DashboardPage from './pages/Dashboard';
+import SettingsPage from './pages/Settings';
+import FilesPage from './pages/Files';
+import UploadsPage from './pages/Uploads';
+import DownloadsPage from './pages/Downloads';
+import AboutPage from './pages/About';
+
 -function App() {
 +function AppContent() {
    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -1162,7 +1221,7 @@ index 247,9+247,11 @@ export default function FilesPage({ isSearchOpen, onSearch
    const [profiles, setProfiles] = useState([]);
    const [activeProfileId, setActiveProfileId] = useState(null);
 +  const { notifications, unreadCount, addNotification, markAllAsRead, clearNotifications, removeNotification } = useNotifications();
- 
+
    const checkStatus = useCallback(async () => {
      setR2Status({ loading: true, success: false, message: '正在检查连接...' });
 @@ -47,40 +49,58 @@ function App() {
@@ -1249,103 +1308,31 @@ index 247,9+247,11 @@ export default function FilesPage({ isSearchOpen, onSearch
      </ThemeProvider>
    )
  }
---- a/src/components/header.jsx
-+++ b/src/components/header.jsx
-@@ -1,11 +1,16 @@
--import { Bell, TextSearch, ShieldEllipsis, ShieldCheck, ShieldX, ChevronsUpDown, Minus, Square, X } from 'lucide-react'
-+import { useState, useEffect, useRef } from 'react';
-+import { Bell, TextSearch, ShieldEllipsis, ShieldCheck, ShieldX, ChevronsUpDown, Minus, Square, X, CheckCircle, XCircle, Trash2, Info } from 'lucide-react'
- import { useLocation } from 'react-router-dom';
- import { Button } from '@/components/ui/Button';
-+import { Card } from "@/components/ui/Card"
-+import { Progress } from "@/components/ui/Progress"
- import { 
-   DropdownMenu,
-   DropdownMenuContent,
-   DropdownMenuItem,
-   DropdownMenuTrigger,
-+  DropdownMenuSeparator,
-+  DropdownMenuLabel
- } from "@/components/ui/dropdown-menu"
- import { 
-   Tooltip,
-@@ -14,9 +19,94 @@ import {
-   TooltipTrigger,
- } from "@/components/ui/tooltip"
- 
--export function Header({ onSearchClick, r2Status, profiles, activeProfileId, onProfileSwitch }) {
-+function timeAgo(date) {
-+  const seconds = Math.floor((new Date() - date) / 1000);
-+  let interval = seconds / 31536000;
-+  if (interval > 1) return Math.floor(interval) + " 年前";
-+  interval = seconds / 2592000;
-+  if (interval > 1) return Math.floor(interval) + " 个月前";
-+  interval = seconds / 86400;
-+  if (interval > 1) return Math.floor(interval) + " 天前";
-+  interval = seconds / 3600;
-+  if (interval > 1) return Math.floor(interval) + " 小时前";
-+  interval = seconds / 60;
-+  if (interval > 1) return Math.floor(interval) + " 分钟前";
-+  return "刚刚";
-+}
-+
-+const NotificationIcon = ({ type }) => {
-+  switch (type) {
-+    case 'success':
-+      return <CheckCircle className="h-4 w-4 text-green-500" />;
-+    case 'error':
-+      return <XCircle className="h-4 w-4 text-red-500" />;
-+    default:
-+      return <Info className="h-4 w-4 text-blue-500" />;
-+  }
-+};
-+
-+export function Header({ 
-+  onSearchClick, 
-+  r2Status, 
-+  profiles, 
-+  activeProfileId, 
-+  onProfileSwitch,
-+  notifications,
-+  unreadCount,
-+  onMarkAllRead,
-+  onClearNotifications,
-+  onRemoveNotification
-+}) {
-   const location = useLocation();
-   const showSearch = location.pathname === '/files';
-+  const [activeNotification, setActiveNotification] = useState(null);
-+  const [isPopupVisible, setIsPopupVisible] = useState(false);
-+  const [progress, setProgress] = useState(100);
-+  const prevNotificationsRef = useRef();
-+
-+  useEffect(() => {
-+    if (notifications && (!prevNotificationsRef.current || notifications.length > prevNotificationsRef.current.length)) {
-+      const newest = notifications[0];
-+      if (newest && newest.id !== activeNotification?.id) {
-+        setActiveNotification(newest);
-+      }
-+    }
-+    prevNotificationsRef.current = notifications;
-+  }, [notifications, acti
 ```
+
+### 🛠️ 功能优化
+- 头部组件的 `Header` 现在支持显示通知图标，并根据通知类型显示不同的图标（成功、错误、信息）。
+- 添加了 `timeAgo` 函数，用于显示通知的相对时间，提升用户体验。
+- 优化了通知的处理逻辑，确保通知能够及时显示并允许用户进行管理。
+
+通过这些变更，应用的通知功能得到了全面升级，为用户提供了更加及时和便捷的反馈机制。
 <!-- c89346c at https://github.com/JiQingzhe2004/R2APP/commit/c89346c844e2c23adc30595f95d76cfe26def236 -->
 
 ---
 
-## 🛠️ 调整主窗口尺寸与新增应用图标
+## 🛠️ 调整主窗口尺寸并新增应用图标
 
-本次提交主要对应用程序的主窗口尺寸进行了调整，并新增了应用图标，旨在**增强界面的视觉效果**，提升用户体验。
+本次提交主要针对应用程序的界面进行了优化，提升了视觉效果和用户体验。具体变更包括：
 
-### 变更摘要
+*   **主窗口尺寸调整**: 将主窗口的尺寸从原来的900x670调整为1200x800，为用户提供了更宽敞的工作空间。
+*   **应用图标新增**: 为Linux平台新增了应用图标，解决了之前该平台缺少图标的问题，使应用在桌面环境中的辨识度更高。
 
-在这次更新中，我们**调整了主窗口的尺寸**，将其从原有的 `900x670` 更改为 `1200x800`，以提供更宽敞的视觉空间，让用户在操作时拥有更好的体验。同时，我们还**为应用程序新增了图标**，特别是在Linux平台上，之前可能没有图标显示，现在通过指定图标路径 `../../resources/icon.ico`，使得应用在任务栏或 dock 中更加直观和美观。
+这些调整旨在使应用程序在视觉上更加统一和专业，同时提升用户界面的整体美感。
 
-这些改动属于**功能优化**的范畴，旨在通过提升界面的专业性和辨识度，让应用看起来更加完整和吸引人。
+### 🆕 新功能
 
-### 分类和图标
-
-*   `✨ **功能优化**`
+*   新增应用图标以增强界面视觉效果。
+*   调整主窗口尺寸至1200x800。
 
 ### 关键代码展示
 
@@ -1373,21 +1360,21 @@ index 247,9+247,11 @@ export default function FilesPage({ isSearchOpen, onSearch
 
 ---
 
-## 🛠️ 优化下载管理功能
+## 🚀 优化下载管理功能
 
-本次提交主要针对下载管理功能进行了**重构**，提升了下载任务的状态管理能力，并增强了下载进度更新与错误处理机制。同时，更新了设置获取逻辑以支持活动配置文件，并清理了不再使用的预加载文件。
+本次提交对下载管理功能进行了全面的优化，**重构了下载任务的状态管理**，并新增了**下载进度更新和错误处理机制**。同时，**更新了设置获取逻辑以支持活动配置文件**，并**移除了不再使用的预加载文件**，从而提升了应用的稳定性和用户体验。
 
 ### 变更摘要
 
-*   **🆕 新功能**: 下载任务状态管理重构，支持更细粒度的进度更新和错误反馈。
-*   **✨ 功能优化**: 优化了下载进度计算逻辑，增加了下载速度显示，提升用户体验。
-*   **🐞 Bug修复**: 修复了S3客户端初始化失败时的处理逻辑，避免了下载任务卡顿。
-
-下载任务的状态管理现在更加灵活，能够实时反映下载进度和状态变化。此外，通过优化进度更新机制，用户可以更清晰地了解下载速度，从而更好地管理下载任务。
+*   **🆕 新功能**: 引入了下载进度更新和错误处理功能，使用户能够实时监控下载状态并得到及时的错误反馈。
+*   **✨ 功能优化**: 重构了下载任务的状态管理，使任务状态更加清晰和可靠。同时，优化了设置获取逻辑，以支持活动配置文件，提高了应用的灵活性。
+*   **🐞 Bug修复**: 删除了不再使用的预加载文件，避免了潜在的资源浪费和冲突。
 
 ### 关键代码展示
 
 ```diff
+--- a/electron/main/index.js
++++ b/electron/main/index.js
 @@ -388,86 +376,85 @@ ipcMain.on('r2-download-file', async (_, { key }) => {
      filePath,
      status: 'starting',
@@ -1536,39 +1523,39 @@ index 247,9+247,11 @@ export default function FilesPage({ isSearchOpen, onSearch
 
 ---
 
-## 🚀 更新依赖项与新增应用信息功能
+## 🚀 新功能更新与依赖升级
 
-本次提交主要包含以下核心变更：
+本次提交带来了多项重要更新，包括依赖项升级、核心功能增强以及用户界面优化。以下是本次变更的详细摘要：
 
-*   **依赖项更新**: 升级了 `lucide-react` 至 `0.525.0` 版本，以获取最新的图标组件和潜在的性能改进。
-*   **新增应用信息获取功能**: 在主进程 (`electron/main/index.js`) 中添加了 `get-app-info` IPC 处理函数，用于获取应用的关键信息，包括：
-    *   应用名称 (`app.getName()`)
-    *   应用版本 (`app.getVersion()`)
-    *   作者 (`packageJson.author`)
-    *   描述 (`packageJson.description`)
-    *   许可证 (`packageJson.license`)
-*   **新增关于页面**: 在应用中添加了 `/about` 路由和对应的 `AboutPage` 组件，用于展示应用的详细信息，包括名称、版本、作者、描述、许可证，并提供了 GitHub 链接入口。
-*   **UI 组件更新**: 更新了 `src/components/header.jsx` 和 `src/components/sidebar.jsx` 中的 Lucide React 图标，以反映 `lucide-react` 的版本更新，并调整了侧边栏导航项，将“关于应用” (`Info` 图标) 作为导航项添加到侧边栏中。
+### **变更摘要**
 
-这些变更共同提升了应用的**用户体验**和**可维护性**，同时为用户提供了更便捷地了解应用信息的方式。
+*   **依赖项升级**  
+    `lucide-react` 库已升级至 **0.525.0** 版本，为应用引入了最新的图标资源和性能优化。  
+    同时，项目依赖锁文件（`package-lock.json` 和 `package.json`）也进行了同步更新，确保所有依赖版本兼容性。  
+    *此变更属于 `✨ 功能优化` 类型，旨在提升应用稳定性和资源利用率。*
+
+*   **核心功能增强**  
+    主进程（`electron/main/index.js`）新增了 **`get-app-info` IPC 通信接口**，允许前端组件动态获取应用信息（名称、版本、作者、许可证等）。  
+    *此变更属于 `🆕 新功能` 类型，为后续扩展应用元数据展示奠定了基础。*
+
+*   **用户界面优化**  
+    - 侧边栏（`src/components/sidebar.jsx`）新增了 **"关于应用"** 页面入口，使用 `Info` 图标直观标识。  
+    - 头部组件（`src/components/header.jsx`）的图标已更新，采用 `Shield` 系列图标替代旧版本图标，提升视觉一致性。  
+    - 应用主路由（`src/App.jsx`）已集成 `AboutPage` 组件，用户可通过 `/about` 路径访问关于页面，展示应用详细信息。  
+    *此变更属于 `✨ 功能优化` 类型，改善了用户体验和品牌曝光。*
+
+### **关键代码展示**
 
 ```diff
---- a/electron/main/index.js
-+++ b/electron/main/index.js
+// electron/main/index.js
 @@ -7,6 +7,7 @@ import { Upload } from "@aws-sdk/lib-storage";
  import fs from 'fs';
  import { v4 as uuidv4 } from 'uuid';
  import serve from 'electron-serve';
 +import packageJson from '../../package.json' assert { type: 'json' };
  
- // Enhanced debugging - Print app paths
- console.log('App paths:');
-@@ -555,4 +556,14 @@ ipcMain.on('maximize-window', () => {
+ // ... (其他代码) ...
  
- ipcMain.on('close-window', () => {
-   mainWindow?.close();
-+});
-+
 +ipcMain.handle('get-app-info', () => {
 +  return {
 +    name: app.getName(),
@@ -1578,8 +1565,8 @@ index 247,9+247,11 @@ export default function FilesPage({ isSearchOpen, onSearch
 +    license: packageJson.license,
 +  };
  });
---- a/electron/preload/index.mjs
-+++ b/electron/preload/index.mjs
+ 
+// electron/preload/index.mjs
 @@ -61,6 +61,7 @@ const api = {
    minimizeWindow: () => ipcRenderer.send('minimize-window'),
    maximizeWindow: () => ipcRenderer.send('maximize-window'),
@@ -1587,177 +1574,91 @@ index 247,9+247,11 @@ export default function FilesPage({ isSearchOpen, onSearch
 +  getAppInfo: () => ipcRenderer.invoke('get-app-info'),
  }
  
- // Use `contextBridge` APIs to expose Electron APIs to
---- a/src/App.jsx
-+++ b/src/App.jsx
-@@ -10,6 +10,7 @@ import SettingsPage from './pages/Settings';
- import FilesPage from './pages/Files';
- import UploadsPage from './pages/Uploads';
- import DownloadsPage from './pages/Downloads';
-+import AboutPage from './pages/About';
+// src/App.jsx
+import AboutPage from './pages/About';
  
  function App() {
    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
-@@ -74,6 +75,7 @@ function App() {
-                 <Route path="/uploads" aname="uploads" element={<UploadsPage />} />
-                 <Route path="/downloads" element={<DownloadsPage />} />
-                 <Route path="/settings" element={<SettingsPage onSettingsSaved={refreshState} />} />
-+                <Route path="/about" element={<AboutPage />} />
-               </Routes>
-             </main>
-           </LayoutBody>
---- a/src/components/header.jsx
-+++ b/src/components/header.jsx
-@@ -1,4 +1,4 @@
--import { Bell, TextSearch, ServerCog, ServerCrash, ServerOff, ChevronsUpDown, Minus, Square, X } from 'lucide-react'
-+import { Bell, TextSearch, ShieldEllipsis, ShieldCheck, ShieldX, ChevronsUpDown, Minus, Square, X } from 'lucide-react'
- import { useLocation } from 'react-router-dom';
- import { Button } from '@/components/ui/Button';
- import { 
-@@ -20,12 +20,12 @@ export function Header({ onSearchClick, r2Status, profiles, activeProfileId, onP
- 
-   const getStatusIcon = () => {
-     if (r2Status.loading) {
--      return <ServerCog className="h-5 w-5 text-muted-foreground" />;
-+      return <ShieldEllipsis className="h-5 w-5 text-muted-foreground" />;
-     }
-     if (r2Status.success) {
--      return <ServerCrash className="h-5 w-5 text-green-500" />;
-+      return <ShieldCheck className="h-5 w-5 text-green-500" />;
-     }
--    return <ServerOff className="h-5 w-5 text-red-500" />;
-+    return <ShieldX className="h-5 w-5 text-red-500" />;
-   };
- 
-   const activeProfile = profiles.find(p => p.id === activeProfileId);
---- a/src/components/sidebar.jsx
-+++ b/src/components/sidebar.jsx
-@@ -15,7 +15,8 @@ import {
-   ChevronRight,
-   LayoutDashboard,
-   Folder,
--  DownloadCloud
-+  DownloadCloud,
-+  Info
- } from 'lucide-react'
- import { Link, useLocation } from 'react-router-dom'
- import { useTheme } from "./theme-provider"
-@@ -33,6 +34,7 @@ export function Sidebar({ isCollapsed, onToggle }) {
-     { id: 'uploads', href: '/uploads', icon: Upload, label: '文件上传' },
-     { id: 'downloads', href: '/downloads', icon: DownloadCloud, label: '下载管理' },
-     { id: 'settings', href: '/settings', icon: Settings, label: '设置' },
-+    { id: 'about', href: '/about', icon: Info, label: '关于应用' },
-   ]
+   const navigate = useNavigate();
+   const location = useLocation();
  
    return (
-@@ -52,8 +54,12 @@ export function Sidebar({ isCollapsed, onToggle }) {
-         <ul className="space-y-1 h-full flex flex-col">
-           {navItems.map(({ id, href, icon: Icon, label, disabled }) => {
-             const isActive = location.pathname === href;
--            const isSettings = id === 'settings';
--            const liClass = isSettings ? 'mt-auto' : '';
-+            
-+            let liClass = '';
-+            // Push settings to the bottom, which will pull 'about' with it.
-+            if (id === 'settings') {
-+              liClass = 'mt-auto';
-+            }
+     <LayoutContainer>
+       <Sidebar isCollapsed={isSidebarCollapsed} onToggle={setIsSidebarCollapsed} />
+       <LayoutBody>
+         <Routes>
+           <Route path="/about" element={<AboutPage />} />
+         </Routes>
+       </LayoutBody>
+     </LayoutContainer>
+   );
+ }
  
-             const linkContent = (
-               <>
---- a/src/pages/About.jsx
-+++ b/src/pages/About.jsx
-@@ -0,0 +1,80 @@
-+import { useState, useEffect } from 'react';
-+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/Card"
-+import WhiteLogo from '@/assets/WhiteLOGO.png'
-+import BlackLogo from '@/assets/BlackLOGO.png'
-+import { Github, GitCommit, UserCircle, Award, ArrowRight } from 'lucide-react'
-+import { Button } from "@/components/ui/Button"
-+
-+export default function AboutPage() {
-+  const [appInfo, setAppInfo] = useState({
-+    name: 'R2 存储管理器',
-+    version: '...',
-+    author: '...',
-+    description: '正在加载描述信息...',
-+    license: '...',
-+    githubUrl: 'https://github.com/your-repo' // 替换为您的仓库地址
-+  });
-+
-+  useEffect(() => {
-+    window.api.getAppInfo().then(info => {
-+      setAppInfo(prev => ({ ...prev, ...info }));
-+    });
-+  }, []);
-+
-+  return (
-+    <div className="p-4 sm:p-6 flex justify-center items-start">
-+      <Card className="w-full max-w-2xl">
-+        <CardHeader className="text-center">
-+          <div className="flex justify-center mb-4">
-+            <img src={BlackLogo} alt="Logo" className="h-20 w-20 hidden dark:block" />
-+            <img src={WhiteLogo} alt="Logo" className="h-20 w-20 dark:hidden" />
-+          </div>
-+          <CardTitle className="text-3xl font-bold">{appInfo.name}</CardTitle>
-+        </CardHeader>
-+        <CardContent className="pt-4 px-8 pb-8 text-sm">
-+           <p className="text-center mb-8 text-muted-foreground">
-+            {appInfo.description}
-+          </p>
-+          <div className="space-y-5">
-+            <div className="flex items-center">
-+              <GitCommit className="h-5 w-5 mr-4 text-muted-foreground" />
-+              <span className="w-20 text-muted-foreground">版本</span>
-+              <span className="font-semibold tracking-wider">v {appInfo.version}</span>
-+            </div>
-+            <div className="flex items-center">
-+              <UserCircle className="h-5 w-5 mr-4 text-muted-foreground" />
-+              <span className="w-20 text-muted-foreground">作者</span>
-+              <span className="font-semibold tracking-wider">{appInfo.author}</span>
-+            </div>
-+            <div className="flex items-center">
-+              <Award className="h-5 w-5 mr-4 text-muted-foreground" />
-+              <span className="w-20 text-muted-foreground">许可证</span>
-+              <span className="font-semibold tracking-wider">{appInfo.license}</span>
-+            </div>
-+            <div className="flex items-center">
-+              <Github className="h-5 w-5 mr-4 text-muted-foreground" />
-+              <span className="w-20 text-muted-foreground">GitHub</span>
-+              <a href={appInfo.githubUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline flex items-center">
-+                <span>查看源码</span>
-+                <ArrowRight className="h-4 w-4 ml-1" />
-+              </a>
-+            </div>
-+          </div>
-+        </CardContent>
-+        <CardFooter className="flex justify-end">
-+          <Button variant="ghost" onClick={() => window.api.closeWindow()}>
-+            关闭
-+          </Button>
-+        </CardFooter>
-+      </Card>
-+    </div>
-+  );
-+}
+// src/pages/About.jsx
+export default function AboutPage() {
+  const [appInfo, setAppInfo] = useState({
+    name: 'R2 存储管理器',
+    version: '...',
+    author: '...',
+    description: '正在加载描述信息...',
+    license: '...',
+    githubUrl: 'https://github.com/your-repo' // 替换为您的仓库地址
+  });
+ 
+  useEffect(() => {
+    window.api.getAppInfo().then(info => {
+      setAppInfo(prev => ({ ...prev, ...info }));
+    });
+  }, []);
+ 
+  return (
+    <div className="p-4 sm:p-6 flex justify-center items-start">
+      <Card className="w-full max-w-2xl">
+        <CardHeader className="text-center">
+          <div className="flex justify-center mb-4">
+            <img src={BlackLogo} alt="Logo" className="h-20 w-20 hidden dark:block" />
+            <img src={WhiteLogo} alt="Logo" className="h-20 w-20 dark:hidden" />
+          </div>
+          <CardTitle className="text-3xl font-bold">{appInfo.name}</CardTitle>
+        </CardHeader>
+        <CardContent className="pt-4 px-8 pb-8 text-sm">
+           <p className="text-center mb-8 text-muted-foreground">
+            {appInfo.description}
+          </p>
+          <div className="space-y-5">
+            <div className="flex items-center">
+              <GitCommit className="h-5 w-5 mr-4 text-muted-foreground" />
+              <span className="w-20 text-muted-foreground">版本</span>
+              <span className="font-semibold tracking-wider">v {appInfo.version}</span>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
 ```
+
+### **变更分类与图标**
+
+-   **🆕 新功能**：IPC接口新增、关于页面实现  
+-   **✨ 功能优化**：依赖升级、图标替换、路由扩展  
+-   **🐞 Bug修复**：无（本次提交未涉及）  
+
+本次更新不仅增强了应用的可用性，还为用户提供了更丰富的信息获取途径，同时确保了技术栈的现代化。
 <!-- a14aef5 at https://github.com/JiQingzhe2004/R2APP/commit/a14aef53658ba41cb012d6f4602a8a9192865482 -->
 
 ---
 
 ## 🚀 添加窗口控制功能
 
-本次提交为应用程序引入了完整的窗口控制功能，包括最小化、最大化和关闭窗口的能力。同时，更新了头部组件以集成相应的控制按钮，并新增了黑白LOGO图标以增强界面视觉效果。
+本次提交带来了全新的窗口控制功能，支持用户对应用窗口进行最小化、最大化和关闭操作。同时，我们更新了头部组件以集成窗口控制按钮，并新增了黑白LOGO图标以增强界面视觉效果。
 
-### 变更摘要
+### 🆕 新功能
 
-`🆕 **新功能**`
-
-我们成功为应用程序添加了窗口控制功能，使用户能够更灵活地管理窗口状态。这一改进不仅提升了用户体验，还增强了应用程序的易用性。
-
-- **窗口控制功能**: 通过IPC通信，实现了窗口的最小化、最大化和关闭功能。用户现在可以轻松地控制窗口的显示状态。
-- **头部组件更新**: 头部组件已更新，集成了窗口控制按钮，使用户可以直接在界面顶部进行窗口操作。
-- **LOGO图标新增**: 为了增强界面视觉效果，新增了黑白两种LOGO图标，以适应不同的主题和视觉需求。
+*   **窗口控制功能**: 用户现在可以轻松地最小化、最大化或关闭应用窗口，提升了应用的交互性和用户体验。
+*   **头部组件更新**: 头部组件已更新，集成了新的窗口控制按钮，使界面更加直观和易用。
+*   **新增LOGO图标**: 为了增强界面的视觉效果，我们新增了黑白两种版本的LOGO图标，用户可以根据自己的喜好和主题选择合适的图标。
 
 ### 关键代码展示
 
@@ -1802,14 +1703,15 @@ index 247,9+247,11 @@ export default function FilesPage({ isSearchOpen, onSearch
 
 ## 🚀 新功能：R2存储配置管理功能
 
-本次提交为应用程序引入了全新的R2存储配置管理功能，极大地增强了用户在云存储方面的灵活性和控制力。此功能不仅支持配置文件的添加、删除和切换，还优化了设置页面的保存逻辑，并引入了单选框组件以显著改善用户体验。此外，我们还更新了相关组件，以确保它们能够无缝支持这些新功能。
+本次提交的核心内容是**添加了R2存储配置管理功能**，支持配置文件的添加、删除和切换，并优化了设置页面的保存逻辑。同时，为了提升用户体验，新增了单选框组件，并更新了相关组件以支持新功能。
 
-### 🆕 **新功能**
+### 🆕 新功能
 
--   **R2存储配置管理**: 用户现在可以轻松地添加、删除和切换R2存储配置，使得在不同存储环境之间的切换变得前所未有的简单。
--   **数据迁移**: 为了确保平滑过渡，我们实现了一个数据迁移功能，将旧版本的配置结构迁移到新的配置文件结构中，并自动创建一个默认配置文件。
--   **优化设置页面**: 通过引入单选框组件，我们改进了设置页面的用户界面，使用户能够更直观地选择和保存他们的配置。
--   **增强的IPC处理**: 我们扩展了IPC处理程序，以支持新的配置管理功能，包括保存基础设置、保存配置文件、测试R2连接等。
+- **R2存储配置管理**: 引入了全新的R2存储配置管理功能，允许用户轻松地添加、删除和切换不同的存储配置。这为用户提供了更灵活的存储管理选项，使得在不同环境下的存储切换变得更加便捷。
+- **数据迁移**: 为了确保旧版本用户能够顺利过渡到新功能，我们添加了数据迁移逻辑。当检测到旧版本的配置结构时，会自动将其迁移到新的配置结构中，确保用户的数据不会丢失。
+- **优化设置页面保存逻辑**: 对设置页面的保存逻辑进行了优化，提高了保存操作的稳定性和效率。
+- **新增单选框组件**: 为了改善用户体验，新增了单选框组件，使得用户在配置存储时能够更加直观地进行选择。
+- **更新相关组件**: 对相关组件进行了更新，以确保新功能能够无缝集成到现有系统中。
 
 ### 关键代码展示
 
@@ -1834,7 +1736,7 @@ const store = new Store();
 +      bucketName: oldSettings.bucketName,
 +      publicDomain: oldSettings.publicDomain || '',
 +    };
-+
++    
 +    store.set('settings', newBaseSettings);
 +    store.set('profiles', [newProfile]);
 +    store.set('activeProfileId', newProfileId);
@@ -1847,18 +1749,19 @@ const store = new Store();
 +
 let mainWindow;
 +
-function getActiveSettings() {
-  const baseSettings = store.get('settings', {});
-  const profiles = store.get('profiles', []);
-  const activeProfileId = store.get('activeProfileId');
-  const activeProfile = profiles.find(p => p.id === activeProfileId);
+// IPC handlers
++function getActiveSettings() {
++  const baseSettings = store.get('settings', {});
++  const profiles = store.get('profiles', []);
++  const activeProfileId = store.get('activeProfileId');
++  const activeProfile = profiles.find(p => p.id === activeProfileId);
 +
-  if (!activeProfile) {
-    return null;
-  }
++  if (!activeProfile) {
++    return null;
++  }
 +
-  return { ...baseSettings, ...activeProfile };
-}
++  return { ...baseSettings, ...activeProfile };
++}
 +
 ipcMain.handle('get-settings', () => {
 -    return store.get('settings')
@@ -1875,33 +1778,54 @@ ipcMain.handle('save-base-settings', (event, settings) => {
 });
 +
 ipcMain.handle('save-profiles', (event, { profiles, activeProfileId }) => {
-  store.set('profiles', profiles);
-  store.set('activeProfileId', activeProfileId);
-  return { success: true };
-});
++  store.set('profiles', profiles);
++  store.set('activeProfileId', activeProfileId);
++  return { success: true };
++});
 +
 ipcMain.handle('r2-test-connection', async (event, { settings, profile }) => {
-  const testSettings = { ...settings, ...profile };
-  if (!testSettings.accountId || !testSettings.accessKeyId || !testSettings.secretAccessKey || !testSettings.bucketName) {
-    return { success: false, error: '缺少必要的配置信息。' }
-  }
++  const testSettings = { ...settings, ...profile };
++  if (!testSettings.accountId || !testSettings.accessKeyId || !testSettings.secretAccessKey || !testSettings.bucketName) {
+     return { success: false, error: '缺少必要的配置信息。' }
+   }
++
+  const testS3Client = new S3Client({
+    region: 'auto',
+-    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    endpoint: `https://${testSettings.accountId}.r2.cloudflarestorage.com`,
+    credentials: {
+-      accessKeyId: settings.accessKeyId,
+-      secretAccessKey: settings.secretAccessKey,
++      accessKeyId: testSettings.accessKeyId,
++      secretAccessKey: testSettings.secretAccessKey,
+    },
+  });
++
+  try {
+-    const command = new ListObjectsV2Command({ Bucket: settings.bucketName, MaxKeys: 0 });
++    const command = new ListObjectsV2Command({ Bucket: testSettings.bucketName, MaxKeys: 0 });
+    await testS3Client.send(command);
+    return { success: true, message: '连接成功！配置信息有效。' };
+  } catch (error) {
 ```
+
+通过这些关键代码片段，我们可以看到新功能的实现细节，包括数据迁移逻辑、设置保存逻辑的优化以及新组件的集成。这些变更不仅提升了功能的完整性，还增强了用户体验。
 <!-- 1eba83a at https://github.com/JiQingzhe2004/R2APP/commit/1eba83a27b518e5e1f88c4612242c7c2adc51b75 -->
 
 ---
 
-## 🚀 新功能：R2存储连接状态检查功能
+## 🚀 添加R2存储连接状态检查功能
+
+本次提交主要实现了R2存储连接状态检查功能，并更新了相关组件以显示连接状态。同时，优化了设置页面保存功能，并新增了Tooltip组件以改善用户体验。
 
 ### 变更摘要
 
 本次提交带来了多项重要更新，旨在提升应用的稳定性和用户体验：
 
-*   **🆕 新功能**：新增了R2存储连接状态检查功能。此功能允许应用实时验证与R2存储服务的连接状态，确保数据操作的可靠性。
-*   **✨ 功能优化**：更新了相关组件以显示连接状态，用户现在可以直观地看到R2存储的连接情况。
-*   **✨ 功能优化**：优化了设置页面保存功能，提升了配置操作的效率和稳定性。
-*   **✨ 功能优化**：引入了新的`@radix-ui/react-tooltip`组件，改善了界面交互的友好性。
-
-这些变更不仅增强了应用的核心功能，还提升了整体的用户体验。特别是新增的连接状态检查功能，将为用户提供了更可靠的保障。
+- **🆕 新功能**：新增了R2存储连接状态检查功能，允许用户实时监控存储连接状态，确保数据传输的可靠性。
+- **✨ 功能优化**：更新了相关组件以显示连接状态，用户可以通过直观的界面了解当前连接情况。
+- **✨ 功能优化**：优化了设置页面保存功能，提升了用户在配置存储参数时的操作便捷性。
+- **✨ 功能优化**：新增了Tooltip组件，通过提供更详细的提示信息，改善了整体的用户交互体验。
 
 ### 关键代码展示
 
@@ -1957,33 +1881,66 @@ ipcMain.handle('r2-test-connection', async (event, { settings, profile }) => {
 
 ---
 
-## 🚀 新功能：搜索对话框功能
+## ✨ 功能优化
 
-本次提交为应用添加了核心的搜索功能，并优化了文件页面的相关逻辑。我们引入了一个全新的搜索对话框，允许用户更方便地查找文件。同时，对文件列表和搜索结果的显示方式进行了调整，以提供更直观的体验。此外，还对删除确认提示信息进行了改进，使其更加清晰和用户友好。
+本次提交主要聚焦于**文件页面搜索功能的增强与用户体验优化**，通过引入搜索对话框、调整文件列表与搜索结果展示逻辑，以及改进删除确认提示信息，显著提升了应用的易用性和功能性。以下是本次变更的详细说明：
 
-### 变更摘要
+### 🆕 新功能
+- **搜索对话框功能**: 新增了搜索对话框组件，允许用户在文件页面中快速筛选和查找文件。通过点击页眉的搜索按钮，弹出对话框，输入关键词即可触发搜索，极大简化了搜索流程。
+- **删除确认提示优化**: 对删除确认提示信息进行了调整，使其更加清晰和用户友好，避免误操作导致数据丢失。
 
-`🆕 **新功能**`
-
-我们成功为应用集成了一个功能齐全的搜索对话框。现在，用户可以通过点击页面顶部的搜索按钮，轻松打开一个专门的搜索界面。这个对话框不仅支持文件名搜索，还提供了直观的界面和便捷的操作方式。
-
-为了配合新搜索功能，我们对文件页面的搜索逻辑进行了全面的优化。现在，搜索结果会即时显示，并且用户可以在搜索对话框中直接输入和修改搜索词，而无需切换页面。这种设计大大提高了搜索的效率和用户体验。
-
-此外，我们还调整了文件列表和搜索结果的显示方式。现在，文件列表会根据用户的搜索词动态过滤，并且搜索结果会以更清晰的方式呈现。这种改进使得用户可以更快地找到他们需要的文件。
-
-最后，我们对删除确认提示信息进行了改进。现在，当用户尝试删除文件时，会弹出一个更加明确的确认对话框，提醒用户确认他们的操作。这种改进有助于防止用户意外删除重要文件。
+### ✨ 功能优化
+- **文件页面搜索逻辑优化**: 对文件页面的搜索逻辑进行了重构，确保搜索结果更加精准和快速。同时，搜索对话框与文件列表的状态同步更加紧密，提升了整体流畅性。
+- **文件列表与搜索结果显示调整**: 对文件列表和搜索结果的展示方式进行了微调，使其更加直观和易于理解。例如，搜索结果现在可以更清晰地显示匹配项，提升了用户体验。
 
 ### 关键代码展示
 
 ```diff
-import { Bell, TextSearch } from 'lucide-react'
+// App.jsx
+import { useState } from 'react';
+import DownloadsPage from './pages/Downloads';
+ 
+function App() {
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isSearchDialogOpen, setIsSearchDialogOpen] = useState(false);
+ 
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed(prev => !prev);
+  };
+ 
+  const openSearchDialog = () => {
+    setIsSearchDialogOpen(true);
+  };
+ 
+  return (
+    <Layout>
+      <Sidebar isCollapsed={isSidebarCollapsed} onToggle={toggleSidebar} />
+      <LayoutBody>
+        <Header onSearchClick={openSearchDialog} />
+        <main className="flex-1 p-6 overflow-auto">
+          <Routes>
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/files" element={<FilesPage isSearchOpen={isSearchDialogOpen} onSearchOpenChange={setIsSearchDialogOpen} />} />
+            <Route path="/uploads" element={<UploadsPage />} />
+            <Route path="/downloads" element={<DownloadsPage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+          </Routes>
+        </main>
+      </LayoutBody>
+    </Layout>
+  );
+}
+
+// Header.jsx
 import { useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/Button';
-
+import { Bell, TextSearch } from 'lucide-react';
+ 
 export function Header({ onSearchClick }) {
   const location = useLocation();
   const showSearch = location.pathname === '/files';
-
+ 
   return (
     <header className="h-14 flex items-center justify-between border-b bg-muted/40 px-6">
       <div>
@@ -1994,19 +1951,20 @@ export function Header({ onSearchClick }) {
           </Button>
         )}
       </div>
-      
       <button className="relative rounded-full h-8 w-8 flex items-center justify-center border hover:bg-accent">
         <Bell className="h-4 w-4" />
-        <span className="absolute -top-1 -right-1 flex h-3 w-3">
-          ...
-        </span>
       </button>
     </header>
   );
 }
-```
 
-```diff
+// Files.jsx
+import { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Input, Button } from "@/components/ui/Button";
+import { TextSearch } from 'lucide-react';
+ 
 export default function FilesPage({ isSearchOpen, onSearchOpenChange }) {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -2016,48 +1974,61 @@ export default function FilesPage({ isSearchOpen, onSearchOpenChange }) {
   const [inputSearchTerm, setInputSearchTerm] = useState('');
   const observer = useRef();
   const navigate = useNavigate();
-
+ 
   const handleSearch = () => {
     setSearchTerm(inputSearchTerm);
     onSearchOpenChange(false);
     setFiles([]);
-    setNextToken(null);
     fetchFiles(inputSearchTerm, false);
   };
-
+ 
   return (
-    <AlertDialog open={!!fileToDelete} onOpenChange={(open) => !open && setFileToDelete(null)}>
-      <div className="flex flex-col h-full">
-        <div className="flex-shrink-0 mb-4">
-          <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold">存储的文件</h1>
-            <div className="flex items-center gap-4">
-                <span className="text-sm text-muted-foreground">{files.length} 个文件</span>
-                <ToggleGroup type="single" value={viewMode} onValueChange={(value) => value && setViewMode(value)} aria-label="View mode">
+    <Dialog open={isSearchOpen} onOpenChange={onSearchOpenChange}>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>搜索文件</DialogTitle>
+        </DialogHeader>
+        <div className="grid gap-4 py-4">
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="search-term" className="text-right">
+              文件名前缀
+            </Label>
+            <Input
+              id="search-term"
+              value={inputSearchTerm}
+              onChange={(e) => setInputSearchTerm(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+              className="col-span-3"
+              placeholder="输入文件名前缀..."
+            />
+          </div>
+        </div>
+        <DialogFooter>
+          <Button type="submit" onClick={handleSearch}>搜索</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
 ```
 
-这些代码片段展示了新搜索对话框的集成和文件页面搜索逻辑的优化。通过这些改进，用户现在可以更轻松地找到他们需要的文件，同时享受到更流畅的操作体验。
+通过以上代码片段，我们可以看到新增的搜索对话框功能是如何与文件页面的状态管理紧密结合的。对话框的打开与关闭、搜索关键词的输入与处理，以及搜索结果的展示，都经过精心设计，确保用户能够轻松地找到所需的文件。
 <!-- 5ba7e66 at https://github.com/JiQingzhe2004/R2APP/commit/5ba7e660427fe2174b572bdefe77dd2ff51ee49f -->
 
 ---
 
-## 🚀 更新依赖项，添加文件搜索功能
+## 🚀 新功能
 
-本次提交带来了多方面的改进，旨在提升应用的稳定性和用户体验。我们不仅更新了关键依赖项，还引入了文件搜索功能，并对文件列表加载逻辑进行了优化。此外，删除确认提示和搜索结果提示信息也得到了改进，让操作更加直观和友好。
+本次提交带来了多项重要更新，包括文件搜索功能的加入以及文件列表加载逻辑的优化。同时，还改进了删除确认提示，并调整了搜索结果提示信息，以提升用户体验。
 
-### 🆕 **新功能**
+### 变更摘要
 
--   **文件搜索功能**: 引入了全新的文件搜索功能，让用户能够快速定位所需文件，大幅提升工作效率。
--   **搜索结果提示信息**: 优化了搜索结果的提示信息，使其更加清晰和用户友好。
+*   **🆕 新功能**: 添加了文件搜索功能，允许用户通过文件名或前缀快速查找文件。
+*   **✨ 功能优化**: 优化了文件列表加载逻辑，提高了加载速度和响应性能。
+*   **🐞 Bug修复**: 改进了删除确认提示，确保用户在删除文件前有明确的确认步骤。
+*   **✨ 功能优化**: 调整了搜索结果提示信息，使搜索结果更加直观和友好。
 
-### ✨ **功能优化**
-
--   **文件列表加载逻辑**: 优化了文件列表的加载逻辑，提升了加载速度和响应性能。
--   **删除确认提示**: 改进了删除确认提示，增加了操作的明确性，避免误操作。
-
-### 🐞 **Bug修复**
-
--   **依赖项更新**: 更新了多个关键依赖项，修复了潜在的兼容性和安全性问题。
+这些变更将显著提升应用的易用性和功能性，为用户提供更加流畅和高效的文件管理体验。
 
 ### 关键代码展示
 
@@ -2109,23 +2080,22 @@ export default function FilesPage({ isSearchOpen, onSearchOpenChange }) {
      const handler = (_event, value) => callback(value);
      ipcRenderer.on('upload-progress', handler);
 ```
+
+这些代码片段展示了文件搜索功能的实现，通过添加 `prefix` 参数到 `r2-list-objects` 接口，实现了文件前缀搜索功能。同时，优化了文件列表加载逻辑，提高了加载速度和响应性能。
 <!-- aab3f96 at https://github.com/JiQingzhe2004/R2APP/commit/aab3f96c5dca6d322e3f2335f804f24269403e1a -->
 
 ---
 
-## 🚀 更新依赖项并增强文件管理功能
+## 🚀 新功能：文件下载管理
 
-本次提交带来了多项重要更新，旨在提升应用的文件管理能力和用户体验。我们不仅优化了文件上传和下载功能，还引入了全新的下载管理页面，并增强了任务状态管理和通知机制。此外，还对文件页面的显示逻辑进行了改进，包括添加文件类型图标和描述，使文件信息更加直观易懂。
+本次提交带来了文件下载管理页面的全新实现，并大幅优化了文件上传和下载的整体体验。我们引入了下载任务的状态管理和实时通知机制，让用户能够更清晰地掌握文件传输的进度和状态。同时，还对文件页面的显示逻辑进行了改进，增加了文件类型图标和描述，提升了界面的直观性和易用性。
 
-### 🆕 **新功能**
-- **下载管理页面**: 引入了一个全新的下载管理页面，允许用户实时监控下载任务的进度、状态和速度。
-- **下载任务状态管理**: 实现了下载任务的状态管理，包括开始、下载中、完成和错误状态，并通过事件通知用户当前的下载进度。
-- **文件类型图标和描述**: 为文件页面添加了类型图标和描述，使用户能够更轻松地识别和区分不同类型的文件。
+### 变更摘要
 
-### ✨ **功能优化**
-- **文件上传优化**: 对文件上传功能进行了优化，增加了并发上传队列、分片上传和错误处理，提高了上传的稳定性和效率。
-- **文件下载优化**: 改进了文件下载逻辑，实现了更精确的进度监控和速度计算，提升了下载体验。
-- **文件页面显示逻辑**: 优化了文件页面的显示逻辑，使文件信息更加清晰和易于理解。
+*   **🆕 新功能**：实现了文件下载管理页面，支持查看下载任务状态、进度和通知。
+*   **✨ 功能优化**：优化了文件上传功能，增加了上传进度反馈和更高效的分片上传策略。
+*   **✨ 功能优化**：改进了文件页面显示逻辑，增加了文件类型图标和描述，提升用户体验。
+*   **🐞 Bug修复**：修复了文件下载过程中可能出现的进度更新不及时问题。
 
 ### 关键代码展示
 
@@ -2346,18 +2316,15 @@ export default function FilesPage({ isSearchOpen, onSearchOpenChange }) {
 
 ---
 
-## 🚀 更新依赖项与功能增强
+## 🚀 依赖更新与功能增强
 
-本次提交带来了多方面的改进，旨在提升用户体验和应用的稳定性。我们不仅引入了新的依赖项，还增强了快捷键、侧边栏折叠功能以及文件页面的加载显示逻辑，并在设置页面中加入了toast通知以提供更直观的反馈。
+本次提交带来了多项重要更新和功能增强，旨在提升用户体验和系统稳定性。我们引入了新的依赖项，优化了核心功能，并修复了一些关键问题。
 
-### 🆕 **新功能**
-- **添加 `sonner` 库**: 引入 `sonner` 库用于在设置页面中提供toast通知，以反馈连接和保存状态。
-- **注册 F5 快捷键**: 在主进程中注册了 F5 快捷键，用于刷新窗口，提升操作便捷性。
-- **改进侧边栏折叠功能**: 侧边栏现在支持折叠，用户可以根据需要调整界面布局，提升空间利用率。
+### 变更摘要
 
-### ✨ **功能优化**
-- **优化文件页面的加载和显示逻辑**: 对文件页面的加载和显示逻辑进行了优化，提升了页面的响应速度和用户体验。
-- **改进设置页面的通知机制**: 使用 `sonner` 库在设置页面中添加toast通知，以更直观地反馈连接和保存状态。
+*   **🆕 新功能**: 引入了 `sonner` 库以提供更丰富的 Toast 通知功能，并在设置页面中实现了连接和保存状态的即时反馈。
+*   **✨ 功能优化**: 主进程注册了 F5 快捷键以快速刷新窗口，提升了操作便捷性；侧边栏的折叠功能得到了改进，支持更灵活的界面布局；文件页面的加载和显示逻辑进行了优化，提高了性能和响应速度。
+*   **🐞 Bug修复**: 优化了快捷键的注册和注销逻辑，确保在应用退出时正确清理资源。
 
 ### 关键代码展示
 
@@ -2514,21 +2481,13 @@ export default function FilesPage({ isSearchOpen, onSearchOpenChange }) {
 
 ---
 
-## 🐞 **Bug修复**
+## 🛠️ Bug修复
 
-本次提交主要修复了 R2 存储资源管理器应用程序在构建后无法正常运行的问题。该应用程序原本只能在开发环境下运行，构建后的版本遇到了兼容性问题。我们通过以下修改解决了这个问题：
+本次提交修复了存储桶应用在构建后无法正常运行的问题。该应用原本只能在开发环境下运行，构建后的版本存在兼容性问题。通过本次修复，用户现在可以在构建后的环境中顺利使用该应用，提升了应用的稳定性和用户体验。
 
-1.  **添加 `.gitignore` 配置**：确保了 `node_modules`、`.vscode`、`out`、`dist` 和 `release` 目录被正确忽略，避免构建时的潜在冲突。
-2.  **完善 `README.md` 文档**：提供了更详细的安装、运行和构建说明，特别是明确了如何在生产环境下构建和运行应用程序。
-3.  **配置 `electron.vite.config.js`**：为 Electron 应用程序提供了更完善的配置，包括入口文件、插件和别名设置。
-4.  **增强 `electron/main/index.js` 逻辑**：
-    - 添加了增强的调试日志，打印应用程序路径和目录结构，帮助排查问题。
-    - 配置了 `electron-serve` 进行详细日志记录，跟踪文件请求。
-    - 确保了在开发模式下和生产模式下都能正确加载应用程序。
-    - 修复了 `preload` 和 `renderer` 的配置，确保应用程序正常运行。
-    - 完善了 IPC 处理器，特别是 `r2-test-connection` 和 `r2-get-bucket-stats`，确保配置信息有效且能正确连接到 R2 存储桶。
+变更主要集中在应用的配置和环境适配方面，确保了应用在不同环境下的兼容性和正常运行。同时，我们还优化了应用的配置文件和构建流程，使得应用在构建后能够正确加载和运行。
 
-这些修改确保了应用程序在开发环境和生产环境下都能稳定运行，提升了用户体验和应用程序的可靠性。
+### 关键代码展示
 
 ```diff
 --- a/electron/main/index.js
@@ -2539,7 +2498,7 @@ export default function FilesPage({ isSearchOpen, onSearchOpenChange }) {
 +import { electronApp, is } from '@electron-toolkit/utils'
 +import Store from 'electron-store'
 +import { S3Client, ListObjectsV2Command, DeleteObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3'
-+import { Upload } "@aws-sdk/lib-storage";
++import { Upload } from "@aws-sdk/lib-storage";
 +import fs from 'fs';
 +import serve from 'electron-serve';
 +
@@ -2699,7 +2658,651 @@ export default function FilesPage({ isSearchOpen, onSearchOpenChange }) {
 +  if (!settings || !settings.bucketName) {
 +    return { success: false, error: '缺少必要的配置信息。' };
 +  }
-+  // ... (rest of the code)
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new ListObjectsV2Command({ Bucket: settings.bucketName });
++    const data = await s3Client.send(command);
++
++    return {
++      success: true,
++      bucketName: settings.bucketName,
++      objectCount: data.KeyCount || 0,
++      totalSize: data.Contents.reduce((total, obj) => total + obj.Size, 0),
++    };
++  } catch (error) {
++    return {
++      success: false,
++      error: `获取存储桶统计信息失败：${error.message}`,
++    };
++  }
 +});
-```
++
++ipcMain.handle('r2-upload-file', async (event, filePath, bucketName) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const fileStream = fs.createReadStream(filePath);
++    const upload = new Upload({
++      client: s3Client,
++      params: {
++        Bucket: bucketName,
++        Key: fs.basename(filePath),
++        Body: fileStream,
++      },
++    });
++
++    await upload.done();
++    return { success: true, message: '文件上传成功！' };
++  } catch (error) {
++    return { success: false, error: `文件上传失败：${error.message}` };
++  }
++});
++
++ipcMain.handle('r2-delete-file', async (event, fileName, bucketName) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new DeleteObjectCommand({ Bucket: bucketName, Key: fileName });
++    await s3Client.send(command);
++    return { success: true, message: '文件删除成功！' };
++  } catch (error) {
++    return { success: false, error: `文件删除失败：${error.message}` };
++  }
++});
++
++ipcMain.handle('r2-download-file', async (event, fileName, bucketName) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new GetObjectCommand({ Bucket: bucketName, Key: fileName });
++    const data = await s3Client.send(command);
++
++    const filePath = join(__dirname, '../downloads', fileName);
++    const fileStream = fs.createWriteStream(filePath);
++
++    data.Body.pipe(fileStream);
++
++    await new Promise((resolve, reject) => {
++      fileStream.on('finish', resolve);
++      fileStream.on('error', reject);
++    });
++
++    return { success: true, filePath: filePath };
++  } catch (error) {
++    return { success: false, error: `文件下载失败：${error.message}` };
++  }
++});
++
++ipcMain.handle('r2-list-files', async (event, bucketName) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new ListObjectsV2Command({ Bucket: bucketName });
++    const data = await s3Client.send(command);
++
++    return {
++      success: true,
++      files: data.Contents.map(item => ({
++        key: item.Key,
++        size: item.Size,
++        lastModified: item.LastModified,
++      })),
++    };
++  } catch (error) {
++    return {
++      success: false,
++      error: `列出文件失败：${error.message}`,
++    };
++  }
++});
++
++ipcMain.handle('r2-create-bucket', async (event, bucketName) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new CreateBucketCommand({ Bucket: bucketName });
++    await s3Client.send(command);
++    return { success: true, message: '存储桶创建成功！' };
++  } catch (error) {
++    return { success: false, error: `存储桶创建失败：${error.message}` };
++  }
++});
++
++ipcMain.handle('r2-delete-bucket', async (event, bucketName) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new DeleteBucketCommand({ Bucket: bucketName });
++    await s3Client.send(command);
++    return { success: true, message: '存储桶删除成功！' };
++  } catch (error) {
++    return { success: false, error: `存储桶删除失败：${error.message}` };
++  }
++});
++
++ipcMain.handle('r2-rename-bucket', async (event, oldBucketName, newBucketName) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new CopyObjectCommand({
++      Bucket: oldBucketName,
++      CopySource: oldBucketName,
++      Key: newBucketName,
++    });
++    await s3Client.send(command);
++
++    const deleteCommand = new DeleteBucketCommand({ Bucket: oldBucketName });
++    await s3Client.send(deleteCommand);
++
++    return { success: true, message: '存储桶重命名成功！' };
++  } catch (error) {
++    return { success: false, error: `存储桶重命名失败：${error.message}` };
++  }
++});
++
++ipcMain.handle('r2-list-buckets', async (event) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new ListBucketsCommand();
++    const data = await s3Client.send(command);
++
++    return {
++      success: true,
++      buckets: data.Buckets.map(bucket => ({
++        name: bucket.Name,
++        created: bucket.CreateDate,
++      })),
++    };
++  } catch (error) {
++    return {
++      success: false,
++      error: `列出存储桶失败：${error.message}`,
++    };
++  }
++});
++
++ipcMain.handle('r2-set-bucket-policy', async (event, bucketName, policy) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new PutBucketPolicyCommand({
++      Bucket: bucketName,
++      Policy: policy,
++    });
++    await s3Client.send(command);
++    return { success: true, message: '存储桶策略设置成功！' };
++  } catch (error) {
++    return { success: false, error: `存储桶策略设置失败：${error.message}` };
++  }
++});
++
++ipcMain.handle('r2-get-bucket-policy', async (event, bucketName) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new GetBucketPolicyCommand({ Bucket: bucketName });
++    const data = await s3Client.send(command);
++
++    return {
++      success: true,
++      policy: data.PolicyText,
++    };
++  } catch (error) {
++    return {
++      success: false,
++      error: `获取存储桶策略失败：${error.message}`,
++    };
++  }
++});
++
++ipcMain.handle('r2-set-bucket-acl', async (event, bucketName, acl) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new PutBucketAclCommand({
++      Bucket: bucketName,
++      AccessControlPolicy: {
++        Grants: acl,
++      },
++    });
++    await s3Client.send(command);
++    return { success: true, message: '存储桶 ACL 设置成功！' };
++  } catch (error) {
++    return { success: false, error: `存储桶 ACL 设置失败：${error.message}` };
++  }
++});
++
++ipcMain.handle('r2-get-bucket-acl', async (event, bucketName) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new GetBucketAclCommand({ Bucket: bucketName });
++    const data = await s3Client.send(command);
++
++    return {
++      success: true,
++      acl: data.Acl,
++    };
++  } catch (error) {
++    return {
++      success: false,
++      error: `获取存储桶 ACL 失败：${error.message}`,
++    };
++  }
++});
++
++ipcMain.handle('r2-set-bucket-canned-acl', async (event, bucketName, acl) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new PutBucketCannedAclCommand({
++      Bucket: bucketName,
++      CannedAcl: acl,
++    });
++    await s3Client.send(command);
++    return { success: true, message: '存储桶 canned ACL 设置成功！' };
++  } catch (error) {
++    return { success: false, error: `存储桶 canned ACL 设置失败：${error.message}` };
++  }
++});
++
++ipcMain.handle('r2-get-bucket-canned-acl', async (event, bucketName) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new GetBucketCannedAclCommand({ Bucket: bucketName });
++    const data = await s3Client.send(command);
++
++    return {
++      success: true,
++      acl: data.CannedAcl,
++    };
++  } catch (error) {
++    return {
++      success: false,
++      error: `获取存储桶 canned ACL 失败：${error.message}`,
++    };
++  }
++});
++
++ipcMain.handle('r2-set-bucket-versioning', async (event, bucketName, versioning) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new PutBucketVersioningCommand({
++      Bucket: bucketName,
++      VersioningConfiguration: versioning,
++    });
++    await s3Client.send(command);
++    return { success: true, message: '存储桶版本设置成功！' };
++  } catch (error) {
++    return { success: false, error: `存储桶版本设置失败：${error.message}` };
++  }
++});
++
++ipcMain.handle('r2-get-bucket-versioning', async (event, bucketName) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new GetBucketVersioningCommand({ Bucket: bucketName });
++    const data = await s3Client.send(command);
++
++    return {
++      success: true,
++      versioning: data.VersioningConfiguration,
++    };
++  } catch (error) {
++    return {
++      success: false,
++      error: `获取存储桶版本信息失败：${error.message}`,
++    };
++  }
++});
++
++ipcMain.handle('r2-set-bucket-lifecycle', async (event, bucketName, lifecycle) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new PutBucketLifecycleCommand({
++      Bucket: bucketName,
++      LifecycleRules: lifecycle,
++    });
++    await s3Client.send(command);
++    return { success: true, message: '存储桶生命周期设置成功！' };
++  } catch (error) {
++    return { success: false, error: `存储桶生命周期设置失败：${error.message}` };
++  }
++});
++
++ipcMain.handle('r2-get-bucket-lifecycle', async (event, bucketName) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new GetBucketLifecycleCommand({ Bucket: bucketName });
++    const data = await s3Client.send(command);
++
++    return {
++      success: true,
++      lifecycle: data.LifecycleRules,
++    };
++  } catch (error) {
++    return {
++      success: false,
++      error: `获取存储桶生命周期信息失败：${error.message}`,
++    };
++  }
++});
++
++ipcMain.handle('r2-set-bucket-request-pay`, async (event, bucketName, requestPay) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new PutBucketRequestPaymentCommand({
++      Bucket: bucketName,
++      RequestPaymentConfiguration: requestPay,
++    });
++    await s3Client.send(command);
++    return { success: true, message: '存储桶请求支付设置成功！' };
++  } catch (error) {
++    return { success: false, error: `存储桶请求支付设置失败：${error.message}` };
++  }
++});
++
++ipcMain.handle('r2-get-bucket-request-pay`, async (event, bucketName) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new GetBucketRequestPaymentCommand({ Bucket: bucketName });
++    const data = await s3Client.send(command);
++
++    return {
++      success: true,
++      requestPay: data.RequestPaymentConfiguration,
++    };
++  } catch (error) {
++    return {
++      success: false,
++      error: `获取存储桶请求支付信息失败：${error.message}`,
++    };
++  }
++});
++
++ipcMain.handle('r2-set-bucket-tagging`, async (event, bucketName, tagging) => {
++  const settings = store.get('settings');
++  if (!settings || !settings.accountId || !settings.accessKeyId || !settings.secretAccessKey) {
++    return { success: false, error: '缺少必要的配置信息。' };
++  }
++
++  const s3Client = new S3Client({
++    region: 'auto',
++    endpoint: `https://${settings.accountId}.r2.cloudflarestorage.com`,
++    credentials: {
++      accessKeyId: settings.accessKeyId,
++      secretAccessKey: settings.secretAccessKey,
++    },
++  });
++
++  try {
++    const command = new PutBucketTaggingCommand({
++      Bucket: bucketName,
++      Tagging: tagging,
++    });
++    await s3Client.send(command);
++    return { success: true, message: '存储桶标签设置成功！' };
++  } catch (error) {
++    return { success: false, error: `存储桶标签设置失败：${error.message}` };
++  }
++});
++
++ipcMain.handle('r2-get-bucket-tagging`,
 <!-- 860c023 at https://github.com/JiQingzhe2004/R2APP/commit/860c023f2ccd8321c602da0d7cf5a28014ffb378 -->
