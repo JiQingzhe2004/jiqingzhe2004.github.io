@@ -1,24 +1,23 @@
 # CS-Explorer应用更新说明
 
-## ✨ **功能优化**
+## 🚀 新增更新日志页面
 
-本次提交主要围绕**新增更新日志页面**展开，并对**侧边栏和主应用布局进行了优化**。现在用户可以通过侧边栏直接访问更新日志，提升了应用的导航体验和信息透明度。
+### 变更摘要
 
-### 变更分类：
-- `✨ **功能优化**` - 新增更新日志页面，优化侧边栏以包含更新日志链接。
-- `✨ **功能优化**` - 优化主应用布局，提升整体视觉效果和用户体验。
+本次提交带来了应用中一个重要的新功能——**更新日志页面**的集成。我们不仅添加了一个新的页面来展示应用的最新更新信息，还对侧边栏进行了优化，新增了一个明显的“更新日志”链接，方便用户快速访问。
+
+-   **`🆕 新功能`**: 新增了完整的更新日志页面，使用户能够轻松查阅应用的最新动态和变更。
+-   **`✨ 功能优化`**: 侧边栏布局经过优化，现在包含了指向更新日志的链接，提升了用户体验和导航的便捷性。
 
 ### 关键代码展示
-<details>
-<summary>💡 查看关键代码变更</summary>
 
-\`\`\`diff
+```diff
 --- a/src/App.jsx
 +++ b/src/App.jsx
 @@ -12,6 +12,7 @@ import FilesPage from './pages/Files';
- import UploadsPage from './pages/Uploads';
- import DownloadsPage from './pages/Downloads';
- import AboutPage from './pages/About';
+  import UploadsPage from './pages/Uploads';
+  import DownloadsPage from './pages/Downloads';
+  import AboutPage from './pages/About';
 +import ReleaseNotesPage from './pages/ReleaseNotes';
  
  function AppContent() {
@@ -80,10 +79,7 @@
 +};
 +
 +export default ReleaseNotesPage; 
-\ No newline at end of file
-\`\`\`
-
-</details>
+```
 <!-- 57a9b91 at https://github.com/JiQingzhe2004/R2APP/commit/57a9b9191f00267ef459c933b0df1f421e7051a7 -->
 
 ---
