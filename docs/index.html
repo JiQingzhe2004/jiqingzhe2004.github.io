@@ -15,6 +15,41 @@
   <style>
     :root {
       --theme-hue: 325;
+
+      /* --- Custom Scrollbar --- */
+      /* Light Theme */
+      --scrollbar-track-bg: #f5f5f5;
+      --scrollbar-thumb-bg: #ccc;
+      --scrollbar-thumb-hover-bg: #aaa;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        /* Dark Theme */
+        --scrollbar-track-bg: #2d2d2d;
+        --scrollbar-thumb-bg: #555;
+        --scrollbar-thumb-hover-bg: #777;
+      }
+    }
+
+    /* Webkit Scrollbar Styling */
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--scrollbar-track-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-thumb-bg);
+      border-radius: 10px;
+      border: 3px solid var(--scrollbar-track-bg);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: var(--scrollbar-thumb-hover-bg);
     }
   </style>
 
