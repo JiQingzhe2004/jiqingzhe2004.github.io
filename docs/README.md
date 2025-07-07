@@ -1,5 +1,51 @@
 # CS-Explorer应用更新说明
 
+## 🗑️ 清理不必要的文件
+
+本次提交专注于**优化项目结构**，移除了一些不再需要的文件和目录，从而**提升项目的整洁度和可维护性**。通过删除以下内容，我们确保了`.gitignore`文件更加精简，避免了潜在的错误和混淆。
+
+- `node_modules`: 项目依赖通常通过版本控制系统进行管理，无需在`.gitignore`中特别排除。
+- `.vscode`: VS Code的设置文件，通常与个人开发环境相关，不应用于版本控制。
+- `out` 和 `dist`: 构建输出目录，这些目录的内容通常由构建脚本管理。
+- `release`: 发布相关目录，同样可能由自动化脚本处理。
+- 日志文件（`npm-debug.log*`, `yarn-debug.log*`, `yarn-error.log*`）：这些文件通常在构建或运行时生成，可以保留在本地或通过CI/CD流程管理。
+- `dist-electron`: Electron应用的构建输出目录。
+- 图标文件（`resources/icon.ico`）：如果项目不再使用该图标，可以安全移除。
+- 临时文件（`src/version.json`）：如果该文件不再需要，可以删除以保持代码库的清洁。
+
+这些移除的文件和目录有助于**减少不必要的噪音**，并确保版本控制系统专注于核心代码和配置。
+
+```
+\`\`\`diff
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,19 +0,0 @@
+-node_modules
+-.vscode
+-out
+-dist
+-release
+-
+-# Log files
+-npm-debug.log*
+-yarn-debug.log*
+-yarn-error.log*
+-
+-# Build output
+-dist-electron
+-
+-# icon
+-resources/icon.ico
+-
+-# temp file
+-src/version.json
+\ No newline at end of file
+\`\`\`
+```
+<!-- 2d53ce8 at https://github.com/JiQingzhe2004/R2APP/commit/2d53ce8db3d3bd95c41d4a866ce9de00b619ea2e -->
+
+---
+
 ## 🚀 新增更新日志页面
 
 本次提交主要实现了更新日志页面的功能，并优化了侧边栏以包含更新日志链接，同时对主应用布局进行了微调。
