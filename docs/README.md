@@ -1,5 +1,37 @@
 # CS-Explorer应用更新说明
 
+## 🚀 v3.1.1
+
+本次更新带来了多项令人兴奋的改进和功能增强，旨在提升用户体验和应用的稳定性。以下是本次版本的主要变更：
+
+### ✨ 功能优化
+
+*   **仪表盘优化**：现在支持加载更多活动记录，让用户能够更全面地查看最近的操作历史。通过增加 `visibleActivityCount` 状态和相应的逻辑，仪表盘现在可以动态加载额外的活动记录，提升了信息的透明度和实用性。
+    *   优化了 `Dashboard.jsx` 文件，引入了 `loadMoreButtonRef` 来实现滚动加载，并增加了 `handleDeleteActivity` 和 `handleClearActivities` 函数来处理活动的删除和清除操作。
+    *   更新了 `Progress.jsx` 组件，调整了进度条的高度和样式，使其更加现代化和直观。
+
+### 🆕 新功能
+
+*   **清除和删除最近活动**：新增了清除和删除最近活动的功能，让用户可以更方便地管理自己的操作历史。
+    *   在 `index.js` 中，增加了 `clearRecentActivities` 和 `deleteRecentActivity` 两个 IPC 处理函数，用于清除和删除特定的活动记录。
+    *   在 `index.mjs` 中，增加了 `clearRecentActivities` 和 `deleteRecentActivity` 两个 API 函数，用于调用上述 IPC 处理函数。
+    *   在 `Dashboard.jsx` 中，增加了 `handleDeleteActivity` 和 `handleClearActivities` 两个函数，用于处理用户删除和清除活动记录的操作，并显示相应的通知。
+
+### 🐞 Bug修复
+
+*   **安装程序头部文件去除**：移除了不必要的安装程序头部文件，减少了安装包的大小，提升了安装效率。
+    *   更新了 `package.json` 文件，移除了 `installerHeader` 和 `sidebar` 字段。
+
+### 其他
+
+*   **进度条样式调整**：对进度条样式进行了微调，使其更加美观和符合现代设计趋势。
+    *   更新了 `Progress.jsx` 组件，调整了进度条的高度和背景颜色，并添加了 `animate-pulse-glow` 类来增强视觉效果。
+
+通过这些改进，v3.1.1 版本为用户提供了更加强大和便捷的功能，同时提升了应用的性能和美观度。我们相信这些更新将进一步提升您的使用体验！
+<!-- 3d02936 at https://github.com/JiQingzhe2004/R2APP/commit/3d029366deaa6ad45273e92c01503f5c0b83fdcb -->
+
+---
+
 ## 🚀 v3.1.0
 
 本次更新带来了多项重要改进和新增功能，旨在提升用户体验和应用稳定性。以下是本次版本的主要变更内容：
